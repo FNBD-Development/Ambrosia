@@ -4,7 +4,7 @@ const uptime_array = new mongoose.Schema(
       [
         {
           name: String,
-          timestamp: String,
+          timestamp: Number,
           status: String,
           ping: Number
         },

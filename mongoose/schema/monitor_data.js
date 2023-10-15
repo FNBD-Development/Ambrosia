@@ -2,7 +2,7 @@ import { number } from "prop-types";
 
 const mongoose = require('mongoose');
 
-const uptime_array = new mongoose.Schema(
+const monitordata = new mongoose.Schema(
       [
         {
           name: String,
@@ -14,4 +14,4 @@ const uptime_array = new mongoose.Schema(
       ]
 );
 
-module.exports = uptime_array
+module.exports = monitordata

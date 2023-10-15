@@ -15,6 +15,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use("/api", require('./routers/api'))
 
 // Nothing Much Below
 const PORT = process.env.PORT || 3341
