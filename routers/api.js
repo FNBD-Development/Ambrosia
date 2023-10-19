@@ -4,11 +4,9 @@ const express = require("express");
 const monitordat = require("../mongoose/schema/monitor_data.js");
 const UptimeArray = require("../mongoose/schema/uptime_array");
 const UserData = require("../mongoose/schema/user");
+const ldb = require('../utilities/localdb.js')
 const dayjs = require("dayjs");
-const { QuickDB } = require("quick.db");
-const qdb = new QuickDB({ filePath: "../local_db/local_store.sqlite" });
-const bcrypt = require("bcrypt");
-const router = express.router();
+const router = express.Router();
 
 router.post("/:name/info", async (req, res) => {
   monitordat.find({ name: req.params.name }, (err, MD) => {
@@ -138,6 +136,9 @@ router.post("/login", async (req, res) => {
   });
 });
 
+router.post("/smartwiz/setup", async (req, res) => {
+ 
+})
 
 
 module.exports = router;

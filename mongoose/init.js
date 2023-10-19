@@ -1,5 +1,10 @@
 const mongoose = require('mongoose')
-const chalk = require('chalk')
-mongoose.connect(process.env.mongoose).then(
- console.log(chalk.yellow('[DATABASE]') + chalk.green('Connected Successfully'))
+import chalk from 'chalk';
+mongoose.connect(process.env.mongoose).then( (err) => {
+    if (!err) {
+        console.log(chalk.yellow('[DATABASE]') + chalk.green(' Connected Successfully'))
+    } else {
+        console.log(chalk.yellow('[DATABASE]') + chalk.red(' Connection Failed'))
+    }
+}
 )

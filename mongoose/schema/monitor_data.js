@@ -1,5 +1,3 @@
-import { number } from "prop-types";
-
 const mongoose = require('mongoose');
 
 const monitordata = new mongoose.Schema(
