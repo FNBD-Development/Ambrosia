@@ -1,3 +1,4 @@
-const sql = await Bun.file('../sql/database.sql').text()
-const db = new Database(`./local_db/host.db`)
-db.query(sql).run()
+// init local DB
+// must have mysql installed
+// please only invoke once for now
+require('child_process').execSync('mysql ../sql/init_database.sql')
