@@ -1,10 +1,10 @@
 import { password } from "bun";
-
 const express = require("express");
+//import chalk from "chalk";
 const monitordat = require("../mongoose/schema/monitor_data.js");
 const UptimeArray = require("../mongoose/schema/uptime_array");
 const UserData = require("../mongoose/schema/user");
-const ldb = require('../utilities/localdb.js')
+// const ldb = require('../utilities/localdb.js');
 const dayjs = require("dayjs");
 const router = express.Router();
 
@@ -53,49 +53,50 @@ router.post("/:name/history", async (req, res) => {
   });
 });
 
-router.post('/admin/user/add', async (req, res) => {
+router.post("/admin/user/add", async (req, res) => {
   UserData.findOne({ name: req.session.username }, (err, userdata) => {
     if (!err && userdata) {
-      if (userdata.role !== 'Admin') {
+      if (userdata.role !== "Admin") {
         res.json({
-          title: 'Forbidden 403',
-          description: 'You are unable to change/add a user',
-          icon: 'error',
+          title: "Forbidden 403",
+          description: "You are unable to change/add a user",
+          icon: "error",
         });
       } else {
         // Check if the username is already used
         UserData.findOne({ name: req.body.name }, (err, existingUser) => {
           if (err) {
             res.json({
-              title: 'Error',
-              description: 'An error occurred while checking for existing users',
-              icon: 'error',
+              title: "Error",
+              description:
+                "An error occurred while checking for existing users",
+              icon: "error",
             });
           } else if (existingUser) {
             res.json({
-              title: 'Username Taken',
-              description: 'The username is already in use',
-              icon: 'error',
+              title: "Username Taken",
+              description: "The username is already in use",
+              icon: "error",
             });
           } else {
             // Create a new user if the username is not already used
             const newUser = new UserData({
               name: req.body.name,
               role: req.body.role,
-              password: password.hash(req.body.password, 'bcrypt'),
+              password: password.hash(req.body.password, "bcrypt"),
             });
             newUser.save((err) => {
               if (err) {
                 res.json({
-                  title: 'Error',
-                  description: 'Failed to create a new user',
-                  icon: 'error',
+                  title: "Error",
+                  description: "Failed to create a new user",
+                  icon: "error",
                 });
               } else {
                 res.json({
-                  title: 'Success!',
-                  description: 'Successfully created a new user',
-                  icon: 'success',
+                  title: "Success!",
+                  description: "Successfully created a new user",
+                  icon: "success",
                 });
               }
             });
@@ -104,9 +105,9 @@ router.post('/admin/user/add', async (req, res) => {
       }
     } else {
       res.json({
-        title: 'Error',
-        description: 'An error occurred while checking user permissions',
-        icon: 'error',
+        title: "Error",
+        description: "An error occurred while checking user permissions",
+        icon: "error",
       });
     }
   });
@@ -137,8 +138,26 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/smartwiz/setup", async (req, res) => {
- 
-})
-
+  const newUser = new UserData({
+    name: req.body.name,
+    role: req.body.role,
+    password: password.hash(req.body.password, "bcrypt"),
+  });
+  newUser.save((err) => {
+    if (err) {
+      res.json({
+        title: "Error",
+        description: "Failed to create a new user",
+        icon: "error",
+      });
+    } else {
+      res.json({
+        title: "Success!",
+        description: "Successfully created a new user",
+        icon: "success",
+      });
+    }
+  });
+});
 
 module.exports = router;
