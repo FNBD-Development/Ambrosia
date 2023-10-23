@@ -12,4 +12,6 @@ const monitordata = new mongoose.Schema(
       ]
 );
 
-module.exports = monitordata
+const monitor_data = mongoose.model('monitor_data', monitordata);
+
+module.exports = monitor_data

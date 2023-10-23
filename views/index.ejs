@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../templates/header.ejs') %>
+</head>
+
+<body class="dark:bg-zinc-900">
+    <%- include('../templates/nav.ejs') %>
+        <div class="flex justify-center pt-5">
+            <div class="bg-gray-200/75 dark:bg-zinc-800  shadow-md p-4 rounded-md">
+                <h1 class="text-2xl dark:text-white font-Montserrat mb-3">Setup!</h1>
+                <div class="gap-x-2">
+                    <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin
+                        Username</label>
+                    <input type="email" id="adminname"
+                        class="py-3 px-4 mb-2 block w-full bg-gray-200/80  rounded-md text-sm  dark:bg-zinc-700/25  dark:text-white"
+                        placeholder="Peter Griffan">
+                    <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin
+                        Password</label>
+                    <input type="password" id="adminpass"
+                        class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25   dark:text-white"
+                        placeholder="FNBD">
+                    <div class="flex justify-between items-center gap-x-5">
+                        <h1 class="text-xl dark:text-white font-Montserrat mb-3 mt-3">Have a license?</h1>
+                        <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
+                            href="https://ambrosia.fnbd-team.eu.org/license">Get a license</a>
+                    </div>
+                    <input type="password" id="license"
+                        class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25  dark:border-gray-700 dark:text-white"
+                        placeholder="A License">
+                </div>
+                <button type="button" onclick="sendreq()"
+                    class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md mt-2 bg-purple-300 border border-transparent font-semibold dark:text-white  hover:bg-purple-400 focus:outline-none focus:ring-2 ring-offset-white focus:ring-purple-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                    Install!
+                </button>
+            </div>
+        </div>
+</body>
+<script>
+    const HSThemeAppearance = {
+        init() {
+            const defaultTheme = 'default'
+            let theme = localStorage.getItem('hs_theme') || defaultTheme
+
+            if (document.querySelector('html').classList.contains('dark')) return
+            this.setAppearance(theme)
+        },
+        _resetStylesOnLoad() {
+            const $resetStyles = document.createElement('style')
+            $resetStyles.innerText = `*{transition: unset !important;}`
+            $resetStyles.setAttribute('data-hs-appearance-onload-styles', '')
+            document.head.appendChild($resetStyles)
+            return $resetStyles
+        },
+        setAppearance(theme, saveInStore = true, dispatchEvent = true) {
+            const $resetStylesEl = this._resetStylesOnLoad()
+
+            if (saveInStore) {
+                localStorage.setItem('hs_theme', theme)
+            }
+
+            if (theme === 'auto') {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+            }
+
+            document.querySelector('html').classList.remove('dark')
+            document.querySelector('html').classList.remove('default')
+            document.querySelector('html').classList.remove('auto')
+
+            document.querySelector('html').classList.add(this.getOriginalAppearance())
+
+            setTimeout(() => {
+                $resetStylesEl.remove()
+            })
+
+            if (dispatchEvent) {
+                window.dispatchEvent(new CustomEvent('on-hs-appearance-change', { detail: theme }))
+            }
+        },
+        getAppearance() {
+            let theme = this.getOriginalAppearance()
+            if (theme === 'auto') {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+            }
+            return theme
+        },
+        getOriginalAppearance() {
+            const defaultTheme = 'default'
+            return localStorage.getItem('hs_theme') || defaultTheme
+        }
+    }
+    HSThemeAppearance.init()
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (HSThemeAppearance.getOriginalAppearance() === 'auto') {
+            HSThemeAppearance.setAppearance('auto', false)
+        }
+    })
+
+    window.addEventListener('load', () => {
+        const $clickableThemes = document.querySelectorAll('[data-hs-theme-click-value]')
+        const $switchableThemes = document.querySelectorAll('[data-hs-theme-switch]')
+
+        $clickableThemes.forEach($item => {
+            $item.addEventListener('click', () => HSThemeAppearance.setAppearance($item.getAttribute('data-hs-theme-click-value'), true, $item))
+        })
+
+        $switchableThemes.forEach($item => {
+            $item.addEventListener('change', (e) => {
+                HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
+            })
+
+            $item.checked = HSThemeAppearance.getAppearance() === 'dark'
+        })
+
+        window.addEventListener('on-hs-appearance-change', e => {
+            $switchableThemes.forEach($item => {
+                $item.checked = e.detail === 'dark'
+            })
+        })
+    })
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-right',
+        customClass: {
+            popup: 'colored-toast'
+        },
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
+    })
+</script>
+
+</html>

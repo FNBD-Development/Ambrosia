@@ -9,4 +9,7 @@ const hostconfigs = new mongoose.Schema(
       ]
 );
 
-module.exports = hostconfigs
+const hostsettings = mongoose.model('hostconfiguration', hostconfigs);
+
+
+module.exports = hostsettings

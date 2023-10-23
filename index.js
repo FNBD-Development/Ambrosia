@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 import chalk from 'chalk';
 const path = require('path')
+const fs = require('fs')
+
 const app = express()
 
 app.use(require('cors')())

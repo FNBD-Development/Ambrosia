@@ -1,11 +1,16 @@
 import { password } from "bun";
+const dayjs = require("dayjs");
 const express = require("express");
 //import chalk from "chalk";
+
+/* Schemas */
 const monitordat = require("../mongoose/schema/monitor_data.js");
 const UptimeArray = require("../mongoose/schema/uptime_array");
-const UserData = require("../mongoose/schema/user");
+const User = require("../mongoose/schema/user");
 // const ldb = require('../utilities/localdb.js');
-const dayjs = require("dayjs");
+
+
+
 const router = express.Router();
 
 router.post("/:name/info", async (req, res) => {
@@ -54,7 +59,7 @@ router.post("/:name/history", async (req, res) => {
 });
 
 router.post("/admin/user/add", async (req, res) => {
-  UserData.findOne({ name: req.session.username }, (err, userdata) => {
+  User.findOne({ name: req.session.username }, (err, userdata) => {
     if (!err && userdata) {
       if (userdata.role !== "Admin") {
         res.json({
@@ -64,7 +69,7 @@ router.post("/admin/user/add", async (req, res) => {
         });
       } else {
         // Check if the username is already used
-        UserData.findOne({ name: req.body.name }, (err, existingUser) => {
+        User.findOne({ name: req.body.name }, (err, existingUser) => {
           if (err) {
             res.json({
               title: "Error",
@@ -80,7 +85,7 @@ router.post("/admin/user/add", async (req, res) => {
             });
           } else {
             // Create a new user if the username is not already used
-            const newUser = new UserData({
+            const newUser = new User({
               name: req.body.name,
               role: req.body.role,
               password: password.hash(req.body.password, "bcrypt"),
@@ -114,7 +119,7 @@ router.post("/admin/user/add", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  UserData.findone({ name: req.body.username }, (err, userdata) => {
+  User.findone({ name: req.body.name }, (err, userdata) => {
     if (!userdata) {
       res.json({
         title: "No user",
@@ -138,7 +143,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/smartwiz/setup", async (req, res) => {
-  const newUser = new UserData({
+  const newUser = new User({
     name: req.body.name,
     role: req.body.role,
     password: password.hash(req.body.password, "bcrypt"),
@@ -156,6 +161,10 @@ router.post("/smartwiz/setup", async (req, res) => {
         description: "Successfully created a new user",
         icon: "success",
       });
+      const file = Bun.file("../local_db/setupd");
+      const writer = file.writer();
+      
+      writer.write("Ambrosia Is Setuped");  
     }
   });
 });

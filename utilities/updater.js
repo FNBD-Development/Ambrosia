@@ -10,13 +10,17 @@ Confusing: Yes
 Disk Demon: Yes
 Readable: No
 Formated: Maybe?
+
+TODO: Allow it to also accept y, n
 ================= Ambrosia Updater =================
 */
 
-const axios = require("axios");
+// const axios = require("axios");
+const fetch = require("node-fetch");
 const readline = require("readline");
 const { exec } = require("child_process");
-const fs = require("node:fs");
+const fs = require("fs");
+import chalk from 'chalk'
 
 const repoOwner = "FNBD-Development";
 const repoName = "ambrosia";
@@ -37,14 +41,15 @@ function getLocalCommitSHA(callback) {
 
 async function checkForUpdates() {
   try {
-    getLocalCommitSHA((commitSHA) => {
+    getLocalCommitSHA(async (commitSHA) => {
       if (commitSHA) {
         const localCommitSha = commitSHA;
 
-        const response = axios.get(apiUrl);
-        const data = response.json();
 
-        const latestCommitSha = data[0].sha;
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+        const latestCommitSha = data
         if (latestCommitSha !== localCommitSha) {
           const rl = readline.createInterface({
             input: process.stdin,
@@ -52,16 +57,16 @@ async function checkForUpdates() {
           });
 
           rl.question(
-            "An update is available. Do you want to update and reboot? (yes/no): ",
+            chalk.green("[ UPDATER ]" + chalk.blue(" An update is available. Do you want to update and reboot? (yes/no): ")),
             (answer) => {
               if (answer.toLowerCase() === "yes") {
-                console.log("Updating and rebooting...");
+                console.log(chalk.green("[ UPDATER ] ") + chalk.green(" Updating and rebooting..."));
                 fs.rename(".env", "updating.env", () => {
-                  console.log("\n .ENV Renamed to updating.ENV !\n");
+                  console.log(chalk.green("[ UPDATER ] ") + chalk.blue(".ENV Renamed to updating.ENV !"));
                 });
                 exec("git pull && bun install", (error, stdout, stderr) => {
                   if (error) {
-                    console.error(`Error updating and rebooting: ${error}`);
+                    console.error(chalk.green('[ UPDATER ]') + chalk.red(` Error updating and rebooting: ${error}`));
                   } else {
                     console.log(stdout);
                   }
@@ -87,9 +92,9 @@ async function checkForUpdates() {
                   process.exit();
                 }, 1000);
               } else {
-                console.log("No update performed.");
-              }
-
+            }
+            
+            console.log(chalk.green('[ UPDATER ]') + chalk.red("  No update performed."));
               rl.close();
             }
           );
@@ -99,7 +104,7 @@ async function checkForUpdates() {
       } else {
         console.log("Could not get local commit SHA. Not updating...");
       }
-    });
+})
   } catch (error) {
     console.error("Error checking for updates:", error);
   }

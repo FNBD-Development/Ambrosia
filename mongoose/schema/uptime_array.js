@@ -11,4 +11,6 @@ const uptime_array = new mongoose.Schema(
       ]
 );
 
-module.exports = uptime_array
+
+const uptimearray = mongoose.model('uptimearray', uptime_array);
+module.exports = uptimearray
