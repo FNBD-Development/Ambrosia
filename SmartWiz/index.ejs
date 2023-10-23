@@ -7,33 +7,33 @@
 
 <body class="dark:bg-zinc-900">
   <%- include('../templates/nav.ejs') %>
-  <div class="flex justify-center pt-5">
-    <div class="bg-gray-200/75 dark:bg-zinc-800  shadow-md p-4 rounded-md">
-      <h1 class="text-2xl dark:text-white font-Montserrat mb-3">Setup!</h1>
-      <div class="gap-x-2">
-        <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin Username</label>
-        <input type="email" id="adminname"
-          class="py-3 px-4 mb-2 block w-full bg-gray-200/80  rounded-md text-sm  dark:bg-zinc-700/25  dark:text-white"
-          placeholder="Peter Griffan">
-        <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin Password</label>
-        <input type="password" id="adminpass"
-          class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25   dark:text-white"
-          placeholder="FNBD">
-        <div class="flex justify-between items-center gap-x-5">
-          <h1 class="text-xl dark:text-white font-Montserrat mb-3 mt-3">Have a license?</h1>
-          <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
-            href="https://ambrosia.fnbd-team.eu.org/license">Get a license</a>
+    <div class="flex justify-center pt-5">
+      <div class="bg-gray-200/75 dark:bg-zinc-800  shadow-md p-4 rounded-md">
+        <h1 class="text-2xl dark:text-white font-Montserrat mb-3">Setup!</h1>
+        <div class="gap-x-2">
+          <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin Username</label>
+          <input type="email" id="adminname"
+            class="py-3 px-4 mb-2 block w-full bg-gray-200/80  rounded-md text-sm  dark:bg-zinc-700/25  dark:text-white"
+            placeholder="Peter Griffan">
+          <label for="input-label" class="block text-sm font-medium mb-1 dark:text-white">Admin Password</label>
+          <input type="ap" id="ap"
+            class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25   dark:text-white"
+            placeholder="FNBD">
+          <div class="flex justify-between items-center gap-x-5">
+            <h1 class="text-xl dark:text-white font-Montserrat mb-3 mt-3">Have a license?</h1>
+            <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500"
+              href="https://ambrosia.fnbd-team.eu.org/license">Get a license</a>
+          </div>
+          <input type="password" id="license"
+            class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25  dark:border-gray-700 dark:text-white"
+            placeholder="A License">
         </div>
-        <input type="password" id="license"
-          class="py-3 px-4 block w-full bg-gray-200/80 border-gray-200/50 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/25  dark:border-gray-700 dark:text-white"
-          placeholder="A License">
+        <button type="button" onclick="sendreq()"
+          class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md mt-2 bg-purple-300 border border-transparent font-semibold dark:text-white  hover:bg-purple-400 focus:outline-none focus:ring-2 ring-offset-white focus:ring-purple-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+          Install!
+        </button>
       </div>
-      <button type="button" onclick="sendreq()"
-        class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md mt-2 bg-purple-300 border border-transparent font-semibold dark:text-white  hover:bg-purple-400 focus:outline-none focus:ring-2 ring-offset-white focus:ring-purple-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
-        Install!
-      </button>
     </div>
-  </div>
 </body>
 <script>
   const HSThemeAppearance = {
@@ -132,7 +132,7 @@
 
   function sendreq() {
     const adminName = document.getElementById('adminname')
-    const adminPass = document.getElementById('adminpass');
+    const adminPass = document.getElementById('ap');
     const license = document.getElementById('license');
     if (!adminName.value) {
       document.getElementById('adminname').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
@@ -147,7 +147,7 @@
     }
 
     if (!adminPass.value) {
-      document.getElementById('adminpass').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+      document.getElementById('ap').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
       Toast.fire({
         icon: 'error',
         title: 'error',
@@ -155,11 +155,11 @@
       })
     }
     if (adminPass.value) {
-      document.getElementById('adminpass').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+      document.getElementById('ap').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
     }
 
     if (adminPass.value && adminName.value) {
-      axios.post('http://localhost:3012/api/smartwiz/setup', { name: adminName.value, password: adminPass.value })
+      axios.post('/api/smartwiz/setup', { name: adminName.value, password: document.getElementById('ap').value })
         .then(response => {
           Toast.fire({
             icon: 'success',

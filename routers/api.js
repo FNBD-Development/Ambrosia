@@ -1,15 +1,15 @@
 import { password } from "bun";
 const dayjs = require("dayjs");
 const express = require("express");
+const fs  = require('fs')
 //import chalk from "chalk";
 
 /* Schemas */
 const monitordat = require("../mongoose/schema/monitor_data.js");
 const UptimeArray = require("../mongoose/schema/uptime_array");
 const User = require("../mongoose/schema/user");
+const hostsettings = require("../mongoose/schema/hostconfiguration");
 // const ldb = require('../utilities/localdb.js');
-
-
 
 const router = express.Router();
 
@@ -90,20 +90,12 @@ router.post("/admin/user/add", async (req, res) => {
               role: req.body.role,
               password: password.hash(req.body.password, "bcrypt"),
             });
-            newUser.save((err) => {
-              if (err) {
-                res.json({
-                  title: "Error",
-                  description: "Failed to create a new user",
-                  icon: "error",
-                });
-              } else {
-                res.json({
-                  title: "Success!",
-                  description: "Successfully created a new user",
-                  icon: "success",
-                });
-              }
+            newUser.save();
+
+            res.json({
+              title: "Success!",
+              description: "Successfully created a new user",
+              icon: "success",
             });
           }
         });
@@ -119,53 +111,63 @@ router.post("/admin/user/add", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  User.findone({ name: req.body.name }, (err, userdata) => {
-    if (!userdata) {
+  const userdata =  User.findOne({ name: req.body.name });
+  if (!userdata) {
+    res.json({
+      title: "No user",
+      discription: "No user with that password and name",
+      icon: "error",
+    });
+  } else {
+    if (req.body.password == userdata.password) {
+      req.session.username = req.body.username;
+      req.session.not_listd = userdata.password;
+      req.session.role = userdata.role;
+      res.json({
+        title: "Success",
+        discription: "Logged in",
+        icon: "success",
+      });
+    } else {
       res.json({
         title: "No user",
         discription: "No user with that password and name",
         icon: "error",
       });
-    } else {
-      if (password.verify(req.body.password, userdata.password)) {
-        req.session.username = req.body.username;
-        req.session.not_listd = userdata.password;
-        req.session.role = userdata.role;
-      } else {
-        res.json({
-          title: "No user",
-          discription: "No user with that password and name",
-          icon: "error",
-        });
-      }
     }
-  });
+  }
 });
 
 router.post("/smartwiz/setup", async (req, res) => {
   const newUser = new User({
     name: req.body.name,
-    role: req.body.role,
-    password: password.hash(req.body.password, "bcrypt"),
+    role: "Admin",
+    password: req.body.password,
   });
-  newUser.save((err) => {
+  const hostconfis = new hostsettings({
+    name: "Ambrosia",
+    license: "Not Implemented",
+    setuped: true,
+  });
+  
+
+  fs.writeFile("../local_db/setupd", "Duck", (err) => {
     if (err) {
       res.json({
-        title: "Error",
-        description: "Failed to create a new user",
-        icon: "error",
-      });
-    } else {
-      res.json({
-        title: "Success!",
-        description: "Successfully created a new user",
+        title: "Error!",
+        description: "Error marking setup is completed",
         icon: "success",
       });
-      const file = Bun.file("../local_db/setupd");
-      const writer = file.writer();
-      
-      writer.write("Ambrosia Is Setuped");  
+    }else{
+      console.log(`File  has been created with no data.`);
     }
+  });
+  newUser.save();
+  hostconfis.save();
+  res.json({
+    title: "Success!",
+    description: "Successfully created a new user",
+    icon: "success",
   });
 });
 

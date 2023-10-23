@@ -35,7 +35,7 @@
                             <div>
                                 <label for="email" class="block text-sm mb-2 dark:text-white">Username</label>
                                 <div class="relative">
-                                    <input type="email" id="name" name="email"
+                                    <input type="name" id="name" name="email"
                                         class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-gray-700 dark:text-gray-400"
                                         required aria-describedby="email-error">
                                     <div
@@ -197,51 +197,50 @@
     })
 
     function login() {
-    const adminName = document.getElementById('name')
-    const adminPass = document.getElementById('password');
-    if (!adminName.value) {
-      document.getElementById('name').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
-      Toast.fire({
-        icon: 'error',
-        title: 'error',
-        discription: 'Sent request to API!'
-      })
-    }
-    if (adminName.value) {
-      document.getElementById('password').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
-    }
+        if (!document.getElementById('name').value) {
+            document.getElementById('name').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+            Toast.fire({
+                icon: 'error',
+                title: 'error',
+                discription: 'Sent request to API!'
+            })
+        }
+        if (document.getElementById('name').value) {
+            document.getElementById('password').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+        }
 
-    if (!adminPass.value) {
-      document.getElementById('password').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
-      Toast.fire({
-        icon: 'error',
-        title: 'error',
-        discription: 'Sent request to API!'
-      })
-    }
-    if (adminPass.value) {
-      document.getElementById('password').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
-    }
+        if (!document.getElementById('password').value) {
+            document.getElementById('password').classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+            Toast.fire({
+                icon: 'error',
+                title: 'error',
+                discription: 'Sent request to API!'
+            })
+        }
+        if (document.getElementById('password').value) {
+            document.getElementById('password').classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500', 'border');
+        }
 
-    if (adminPass.value && adminName.value) {
-      axios.post('http://localhost:3012/api/login', { name: adminName.value, password: adminPass.value })
-        .then(response => {
-          Toast.fire({
-            icon: 'success',
-            title: 'Success!',
-            description: 'Request sent to the API!'
-          });
-        })
-        .catch(error => {
-          Toast.fire({
-            icon: 'error',
-            title: 'Error',
-            description: 'Failed to send the request to the API!'
-          });
-          console.error('API request error:', error);
-        });
+        if (document.getElementById('password').value && document.getElementById('name').value) {
+            axios.post('/api/login', { name: document.getElementById('name').value, password: document.getElementById('password').value })
+                .then(response => {
+                    Swal.fire({
+                        icon: response.data.icon,
+                        title: response.data.title,
+                        text: response.data.discription
+                    });
+
+                })
+                .catch(error => {
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        description: 'Failed to send the request to the API!'
+                    });
+                    console.error('API request error:', error);
+                });
+        }
     }
-  }
 </script>
 
 </html>
