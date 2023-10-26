@@ -6,28 +6,43 @@ const router = express.Router();
 const hostsettings = require("../mongoose/schema/hostconfiguration");
 
 router.get("/", async (req, res) => {
-  const hostconfigs = await hostsettings.find();
-    if (!hostconfigs[0].setuped) {
+  const hostconfigs = await hostsettings.find()
+    if (!hostconfigs[0].setuped ) {
       res.render("../SmartWiz/index.ejs", {});
     } else {
-      const mongodbusr = await user.findOne(req.session.username);
+      const mongodbusr = await user.findOne({ name: req.session.username });
       if (!req.session.not_listd) {
-        res.render("../views/errors/duckrender403.ejs", {});
+        res.redirect('/login')
       } else {
         if (req.session.not_listd != mongodbusr) {
           res.render("../views/index.ejs", {});
         } else {
-          res.render("../views/errors/duckrender403.ejs", {});
+          res.redirect('/login')
         }
       }
     }
 });
 
-router.get("/i_hate_my_life", async (req, res) => {
-  res.render("../views/index.ejs", {});
-
-})
-
+router.get("/users", async (req, res) => {
+  const hostconfigs = await hostsettings.find()
+  const users = await user.find()
+    if (!hostconfigs[0].setuped) {
+      res.render("../SmartWiz/index.ejs", {});
+    } else {
+      const mongodbusr = await user.findOne({ name: req.session.username });
+      if (!req.session.not_listd) {
+        res.redirect('/login')
+      } else {
+        if (req.session.not_listd != mongodbusr) {
+          res.render("../views/users.ejs", {
+           user: users
+          });
+        } else {
+          res.redirect('/login')
+        }
+      }
+    }
+});
 router.get("/login", async (req, res) => {
   const hostconfigs = await hostsettings.find();
   if (!hostconfigs[0].setuped) {

@@ -205,23 +205,25 @@
         <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
             <ul class="space-y-1.5">
                 <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
                         href="/">
                         <span class="material-symbols-rounded">
                             home
                         </span>
                         Dashboard
                     </a>
+
+                </li>
+                <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                    href="/users">
+                    <span class="material-symbols-rounded">
+                        group
+                    </span>
+                    Users
+                </a>
                 </li>
                 <li>
-                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
-                        href="/users">
-                        <span class="material-symbols-rounded">
-                            group
-                        </span>
-                        User
-                    </a>
-                </li>
+
 
 
                 <li class="hs-accordion" id="projects-accordion">
@@ -281,150 +283,59 @@
     <!-- Content -->
     <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
         <!-- Page Heading -->
-        <header>
-            <!-- Card Section -->
-            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                <!-- Grid -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Total Monitors
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        <span class="font-semibold">10</span> <span class="text-gray-500">/ 50</span>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
-                                <span class="material-symbols-rounded">
-                                    monitor_heart
-                                </span>
-                            </div>
-                        </div>
+        <header class="" id="header">
+            <div class="grid sm:grid-cols-1 md:sm-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                <% user.forEach( (usr) => { %>
+                <div
+                class=" focus:z-10 focus:border-blue-500 bg-gray-300 focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
+                <div class="flex justify-start">
+                    <img class="inline-block  rounded-md ring-2 ring-white dark:ring-gray-800"
+                        src="<%= usr.avatar %>"
+                        alt="Image Description"
+                        height="62px" 
+                        width="62px">
+                    <div>
+                        <h1 class=" text-2xl dark:text-white ml-2">
+                            <%= usr.name %>
+                        </h1>
 
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
+                        <p class="dark:text-gray-400 text-s ml-2">
+                            <%= usr.role %>
+                        </p>
                     </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Online
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        7
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-green-300">
-                                <span class="material-symbols-rounded">
-                                    ecg_heart
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Offline
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        4
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-red-200">
-                                <span class="material-symbols-rounded">
-                                    ecg_heart
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Uptime Percentage
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        90%
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
-                                <span class="material-symbols-rounded">
-                                    percent
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3  px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
                 </div>
-                <!-- End Grid -->
             </div>
-            <!-- End Card Section -->
+            <% }) %>
+                <div
+                    class=" focus:z-10 focus:border-blue-500 bg-gray-300 focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
+                    <div class="flex justify-start">
+                        <div class="hs-tooltip inline-block [--placement:bottom]">
+                            <button class="hs-tooltip-toggle" onclick="adduser()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-[3.875rem] w-[3.875rem]">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </button>
+                            <span
+                                class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 dark:bg-zinc-700/30 dark:border-zinc-600/80 shadow-md bg-gray-300 backdrop-blur-md border border- text-xs font-medium text-white rounded-md"
+                                role="tooltip">
+                                Add!
+                            </span>
+                        </div>
+
+                        <div>
+                            <input type="text" class="text-2xl block w-[23%] rounded-md ml-2 bg-transparent"
+                                placeholder="Name" id="name">
+
+                            <select class="w-[28%] block bg-transparent ml-2 mt-1" id="role">
+                                <option selected>Admin</option>
+                                <option>User</option>
+                            </select>
+                        </div>
+                    </div>
+                    </button>
+                </div>
+
         </header>
         <!-- End Page Heading -->
     </div>
@@ -525,6 +436,50 @@
         timer: 1500,
         timerProgressBar: true
     })
+
+    function adduser() {
+        axios.post('/api/admin/user/add', { name: document.getElementById('name').value, role: document.getElementById('role').value }).then(response => {
+            console.log(response.data)
+if (response.data.title == "Success!") {
+const alertDiv = document.createElement('div');
+alertDiv.classList.add('bg-green-50', 'absolute', 'border', 'border-green-200', 'text-sm', 'text-green-600', 'rounded-md', 'p-4', 'm-4', 'bottom-0', 'right-0', 'opacity-100', 'transition-opacity', 'duration-500', 'm-4', 'right-0', 'bottom-0', 'absolute');
+alertDiv.setAttribute('role', 'alert');
+const successSpan = document.createElement('span');
+successSpan.classList.add('font-bold');
+successSpan.textContent = 'Success';
+const alertText = document.createTextNode(response.data.description);
+alertDiv.appendChild(successSpan);
+alertDiv.appendChild(alertText);
+const parentElement = document.getElementById('header'); 
+parentElement.appendChild(alertDiv);
+setTimeout(() => {
+    alertDiv.style.opacity = 0;
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 500); // Remove the element after the fade-out animation duration (500 milliseconds)
+}, 3000); // 3000 milliseconds (3 seconds)
+} else if (response.data.title == "Oops!") {
+    const alertDiv = document.createElement('div');
+alertDiv.classList.add('bg-red-50', 'border', 'border-red-200', 'mb-1', 'text-sm', 'text-red-600', 'rounded-md', 'p-4', 'right-0', 'opacity-100', 'transition-opacity', 'duration-500', 'm-4', 'right-0', 'bottom-0', 'absolute');
+alertDiv.setAttribute('role', 'alert');
+const successSpan = document.createElement('span');
+successSpan.classList.add('font-bold');
+successSpan.textContent = 'Error';
+const alertText = document.createTextNode(' '+response.data.description);
+alertDiv.appendChild(successSpan);
+alertDiv.appendChild(alertText);
+const parentElement = document.getElementById('header'); 
+parentElement.appendChild(alertDiv);
+setTimeout(() => {
+    alertDiv.style.opacity = 0;
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 500); // Remove the element after the fade-out animation duration (500 milliseconds)
+}, 3000); // 3000 milliseconds (3 seconds)
+}
+})
+}
+    
 </script>
 
 </html>

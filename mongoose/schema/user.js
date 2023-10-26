@@ -4,7 +4,9 @@ const user = new mongoose.Schema(
         {
           name: String,
           role: String, // Admin/User
-          password: String
+          password: String,
+          avatar: String,
+          inbox: [{ String }]
         },
       ]
 );
