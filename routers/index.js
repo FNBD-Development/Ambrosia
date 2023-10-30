@@ -6,16 +6,21 @@ const router = express.Router();
 const hostsettings = require("../mongoose/schema/hostconfiguration");
 
 router.get("/", async (req, res) => {
+  
   const hostconfigs = await hostsettings.find()
-    if (!hostconfigs[0].setuped ) {
-      res.render("../SmartWiz/index.ejs", {});
+  if (hostconfigs.length == []) {
+    res.render("../SmartWiz/index.ejs", {});
     } else {
-      const mongodbusr = await user.findOne({ name: req.session.username });
       if (!req.session.not_listd) {
         res.redirect('/login')
       } else {
+        let mongodbusr = await user.findOne({ name: req.session.username });
         if (req.session.not_listd != mongodbusr) {
-          res.render("../views/index.ejs", {});
+          res.render("../views/index.ejs", {
+            users: mongodbusr,
+            fqdn: process.env.fqdn
+          });
+          console.log(mongodbusr)
         } else {
           res.redirect('/login')
         }
@@ -26,8 +31,9 @@ router.get("/", async (req, res) => {
 router.get("/users", async (req, res) => {
   const hostconfigs = await hostsettings.find()
   const users = await user.find()
-    if (!hostconfigs[0].setuped) {
-      res.render("../SmartWiz/index.ejs", {});
+
+  if (hostconfigs.length == []) {
+    res.render("../SmartWiz/index.ejs", {});
     } else {
       const mongodbusr = await user.findOne({ name: req.session.username });
       if (!req.session.not_listd) {
@@ -35,7 +41,31 @@ router.get("/users", async (req, res) => {
       } else {
         if (req.session.not_listd != mongodbusr) {
           res.render("../views/users.ejs", {
-           user: users
+           user: users,
+           fqdn: process.env.fqdn,
+           userda: mongodbusr
+          });
+        } else {
+          res.redirect('/login')
+        }
+      }
+    }
+});
+
+
+router.get("/monitors", async (req, res) => {
+  const hostconfigs = await hostsettings.find()
+    if (hostconfigs.length == []) {
+    res.render("../SmartWiz/index.ejs", {});
+    } else {
+      const mongodbusr = await user.findOne({ name: req.session.username });
+      if (!req.session.not_listd) {
+        res.redirect('/login')
+      } else {
+        if (req.session.not_listd != mongodbusr) {
+          res.render("../views/monitors.ejs", {
+           fqdn: process.env.fqdn,
+           userda: mongodbusr
           });
         } else {
           res.redirect('/login')
@@ -45,7 +75,7 @@ router.get("/users", async (req, res) => {
 });
 router.get("/login", async (req, res) => {
   const hostconfigs = await hostsettings.find();
-  if (!hostconfigs[0].setuped) {
+  if (hostconfigs.length == []) {
     res.render("../SmartWiz/index.ejs", {});
   } else {
     res.render("../views/login.ejs", {});

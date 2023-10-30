@@ -1,4 +1,8 @@
 const mongoose = require('mongoose');
+const inbx = new mongoose.Schema({
+  type: String,
+  discription: String,
+});
 const user = new mongoose.Schema(
       [
         {
@@ -6,7 +10,7 @@ const user = new mongoose.Schema(
           role: String, // Admin/User
           password: String,
           avatar: String,
-          inbox: [{ String }]
+          inbox: [inbx]
         },
       ]
 );
