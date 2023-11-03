@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo');
 const fileUpload = require('express-fileupload')
 const app = express()
 
+require('./utilities/FortKNOX')
 app.use(require('cors')())
 app.set("view engine", require('ejs'))
 app.use(cookieParser());

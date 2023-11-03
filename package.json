@@ -35,6 +35,7 @@
     "lodash": "^4.17.21",
     "mathjs": "^11.11.2",
     "mongoose": "^7.6.2",
+    "node-2fa": "^2.0.3",
     "node-cron": "^3.0.2",
     "nodemon": "^3.0.1",
     "preline": "^1.9.0",

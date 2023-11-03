@@ -2848,6 +2848,10 @@ body *{
   background-color: rgb(63 63 70 / 0.6);
 }
 
+:is(.dark .dark\:hover\:bg-zinc-700\/80:hover){
+  background-color: rgb(63 63 70 / 0.8);
+}
+
 :is(.dark .dark\:hover\:bg-zinc-900\/60:hover){
   background-color: rgb(24 24 27 / 0.6);
 }
@@ -2858,14 +2862,6 @@ body *{
 
 :is(.dark .dark\:hover\:bg-zinc-900\/80:hover){
   background-color: rgb(24 24 27 / 0.8);
-}
-
-:is(.dark .dark\:hover\:bg-zinc-800\/80:hover){
-  background-color: rgb(39 39 42 / 0.8);
-}
-
-:is(.dark .dark\:hover\:bg-zinc-700\/80:hover){
-  background-color: rgb(63 63 70 / 0.8);
 }
 
 :is(.dark .dark\:hover\:text-blue-500:hover){

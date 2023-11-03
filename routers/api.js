@@ -32,6 +32,7 @@ router.post("/monitor/:name/history", async (req, res) => {
 });
 
 router.post("/admin/monitor/add", async (req, res) => {
+  const userdata = User.findOne({ name: req.session.username })
   const ua = new UptimeArray({
     name: req.body.name,
     timestamp: Math.floor(Date.now() / 1000),
