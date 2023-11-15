@@ -9,7 +9,11 @@ const monitordata = new mongoose.Schema(
           tsc: String, // Time Since Creation,
           uptime: Number,
           downtime: Number,
-          tls: String
+          tls: String,
+          currentStatus: Boolean,
+          cert_check: Boolean,
+          cert_expires: String,
+          intrvl: String
         },
       ]
 );

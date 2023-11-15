@@ -36,7 +36,7 @@ router.post("/admin/monitor/add", async (req, res) => {
   const ua = new UptimeArray({
     name: req.body.name,
     timestamp: Math.floor(Date.now() / 1000),
-    status: "Unknown",
+    status: [],
     ping: 0,
   });
   const md = new monitordat({
@@ -46,7 +46,8 @@ router.post("/admin/monitor/add", async (req, res) => {
     tsc: dayjs().format("MMMM D, YYYY h:mm A"), // Time Since Creation,
     uptime: 0, // HOW THE FUCK DO I CALCULATE THAT... Wait i am just stupid
     downtime: 0, // 0 Cause no data? https://a.pinatafarm.com/320x349/4889604c7b/megamind-no-b.jpg
-    tls: req.body.tlscb
+    tls: req.body.tlscb,
+    intrvl: req.body.int
   });
   ua.save();
   md.save();
@@ -181,22 +182,13 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/smartwiz/setup", async (req, res) => {
-  const currentTime = new Date().getTime();
-  
-    if (!err && currentTime - stats.mtime.getTime() < 20 * 60 * 1000) {
-      res.json({
-        title: "Error!",
-        discription: "Setup has deactivated. Please restart ambrosia to activate it.",
-        icon: "error",
-      });
-    } else {
-      // Setup can be re-enabled
+
       const newUser = new User({
         name: req.body.name,
         role: "Owner",
         password: req.body.password,
         avatar: `${process.env.FQDN}/assets/default_pfp.jpeg`,
-        inbox: [{ type: "success", description: "Welcome!" }],
+        inbox: [{ type: "success", description: "s!" }],
       });
       const hostconfis = new hostsettings({
         name: "Ambrosia",
@@ -204,16 +196,6 @@ router.post("/smartwiz/setup", async (req, res) => {
         setuped: true,
       });
       
-      // Mark setup as completed
-      fs.writeFile(setupFilePath, "Duck", (err) => {
-        if (err) {
-          res.json({
-            title: "Error!",
-            description: "Error marking setup as completed",
-            icon: "error",
-          });
-        } else {
-          console.log(`File has been created with no data.`);
           
           // Save user and hostconfig data
           newUser.save();
@@ -225,9 +207,7 @@ router.post("/smartwiz/setup", async (req, res) => {
             description: "Successfully created a new user",
             icon: "success",
           });
-        }
-      });
-    }
+
 });
 
 /* Shitty Code For Avatar */

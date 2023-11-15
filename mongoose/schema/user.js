@@ -10,7 +10,8 @@ const user = new mongoose.Schema(
           role: String, // Admin/User
           password: String,
           avatar: String,
-          inbox: [inbx]
+          inbox: [inbx],
+          email: String
         },
       ]
 );

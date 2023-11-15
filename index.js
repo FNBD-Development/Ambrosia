@@ -2,14 +2,28 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+import { env } from 'bun';
 import chalk from 'chalk';
 const path = require('path')
 const fs = require('fs')
 const MongoStore = require('connect-mongo');
 const fileUpload = require('express-fileupload')
+const livereload = require("livereload");
+const connectLiveReload = require("connect-livereload");
+const asd = require('./utilities/cronchange')
 const app = express()
 
+console.log(asd("5m"))
+
 require('./utilities/FortKNOX')
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+app.use(connectLiveReload());
 app.use(require('cors')())
 app.set("view engine", require('ejs'))
 app.use(cookieParser());
@@ -36,7 +50,7 @@ app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 
 
 // Handlers
-//require('./cronjobs/listener')
+require('./cronjobs/listener')
 require('./mongoose/init')
 require('./utilities/updater.js')
 if (fs.existsSync('updating.env')) {
@@ -54,6 +68,12 @@ app.use((req, res, next) => {
 
 // Nothing Much Below
 const PORT = process.env.PORT || 3341
-app.listen(PORT, () => {
+app.listen(PORT, (server) => {
+  if (env.NODE_ENV == "dev") {
+    setTimeout(function() {
+      server.close();
+      console.log("No activity?")
+    }, 1000);    
+   }
   console.log(chalk.blue("[EXPRESS]") + chalk.green(" Running on port:", PORT))
 })

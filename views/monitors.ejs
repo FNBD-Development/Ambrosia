@@ -587,6 +587,20 @@
                   <option disabled>docker</option>
                 </select>
 
+                <label
+                for="type"
+                class="block text-sm font-medium mb-2 dark:text-white mt-2"
+                >Check interval</label
+              >
+              <select
+                id="inter"
+                class="py-3 px-4 pr-9 block w-[25%] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-900 dark:border-gray-700 dark:text-gray-400 mt-2"
+              >
+                <option>1m</option>
+                <option selected>5m</option>
+                <option>10m</option>
+              </select>
+
                 <div class="flex items-center mt-3">
                   <input
                     type="checkbox"
@@ -746,7 +760,8 @@ tlscb
           name: document.getElementById("monname").value,
           type: document.getElementById("type").value,
           tlscb: document.getElementById("tlscb").value,
-          monurl: document.getElementById("monurl").value
+          monurl: document.getElementById("monurl").value,
+          int: document.getElementById("inter").value
         })
         .then((response) => {
           console.log(response.data);

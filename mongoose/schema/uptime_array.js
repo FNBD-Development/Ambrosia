@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
 const status_array = new mongoose.Schema({
-  timestamp: Number,
-  status: String,
+  status: Boolean,
+  ping: Number,
   unix: String
 })
 const uptime_array = new mongoose.Schema(
       [
-        {
+        { 
           name: String,
-          timestamp: Number,
-          status: [status_array]
+          data: [status_array]
         },
       ]
 );
