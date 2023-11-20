@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const inbx = new mongoose.Schema({
   type: String,
   discription: String,
+  closed: Boolean,
+  cid: String
 });
 const user = new mongoose.Schema(
       [

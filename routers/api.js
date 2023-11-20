@@ -16,20 +16,16 @@ const db = require("../utilities/quickmongo.js");
 const router = express.Router();
 
 router.post("/monitor/:name/info", async (req, res) => {
-  monitordat.find({ name: req.params.name }, (err, MD) => {
-    if (err) {
-      console.error("error:", err);
-    } else {
-      res.json(MD);
-    }
-  });
+  let data = require("../mongoose/schema/uptime_array.js")
+  res.json(data)
 });
 
+
 router.post("/monitor/:name/history", async (req, res) => {
-  UptimeArray.find({ name: req.params.name }, (err, monitorData) => {
-    res.json(monitorData);
-  });
+  let data = require("../mongoose/schema/uptime_array.js")
+  res.json(data.data)
 });
+
 
 router.post("/admin/monitor/add", async (req, res) => {
   const userdata = User.findOne({ name: req.session.username })
@@ -53,7 +49,7 @@ router.post("/admin/monitor/add", async (req, res) => {
   md.save();
   await userdata.updateOne(
     { name: req.session.username },
-    { $push: { inbox: { type: "success", discription: "Created monitor!" } } }
+    { $push: { inbox: { type: "success", discription: "Created monitor!", closed: false, cid: passwordgen(6) } } }
   );
   res.json({
     message: "Success! Successfully created the monitor",
@@ -94,6 +90,8 @@ router.post("/admin/user/add", async (req, res) => {
                 inbox: {
                   type: "success",
                   discription: "New user created! Password is: " + pass,
+                  closed: false,
+                  cid: passwordgen(6)
                 },
               },
             }
@@ -111,6 +109,8 @@ router.post("/admin/user/add", async (req, res) => {
                 inbox: {
                   type: "error",
                   discription: "That username is in use",
+                  closed: false,
+                  cid: passwordgen(6)
                 },
               },
             }
@@ -161,7 +161,9 @@ router.post("/login", async (req, res) => {
           $push: {
             inbox: {
               type: "success",
-              discription: "Logged In! " 
+              discription: "Logged In! ",
+              closed: false,
+              cid: passwordgen(6)
             },
           },
         }
@@ -183,30 +185,30 @@ router.post("/login", async (req, res) => {
 
 router.post("/smartwiz/setup", async (req, res) => {
 
-      const newUser = new User({
-        name: req.body.name,
-        role: "Owner",
-        password: req.body.password,
-        avatar: `${process.env.FQDN}/assets/default_pfp.jpeg`,
-        inbox: [{ type: "success", description: "s!" }],
-      });
-      const hostconfis = new hostsettings({
-        name: "Ambrosia",
-        license: "Not Implemented",
-        setuped: true,
-      });
-      
-          
-          // Save user and hostconfig data
-          newUser.save();
-          hostconfis.save();
-          
-          // Respond with a success message
-          res.json({
-            title: "Success!",
-            description: "Successfully created a new user",
-            icon: "success",
-          });
+  const newUser = new User({
+    name: req.body.name,
+    role: "Owner",
+    password: req.body.password,
+    avatar: `${process.env.FQDN}/assets/default_pfp.jpeg`,
+    inbox: [{ type: "success", description: "s!", closed: false, cid: passwordgen(6) }],
+  });
+  const hostconfis = new hostsettings({
+    name: "Ambrosia",
+    license: "Not Implemented",
+    setuped: true,
+  });
+
+
+  // Save user and hostconfig data
+  newUser.save();
+  hostconfis.save();
+
+  // Respond with a success message
+  res.json({
+    title: "Success!",
+    description: "Successfully created a new user",
+    icon: "success",
+  });
 
 });
 
@@ -244,7 +246,7 @@ router.post("/edit_user", async (req, res) => {
     changedata.save();
     userdata.updateOne(
       { _id: userdata._id },
-      { $push: { inbox: { type: "success", discription: "Modified Account" } } }
+      { $push: { inbox: { type: "success", discription: "Modified Account", closed: false, cid: passwordgen(6) } } }
     );
     res.json({
       title: "Success!",
@@ -259,5 +261,24 @@ router.post("/edit_user", async (req, res) => {
     });
   }
 });
+
+router.post("/inbox/delete/", async (req, res) => {
+  if (!req.session) {
+    res.json({
+      title: "Oops!",
+      description: "Whaaa? What are you even doing?",
+      icon: "error",
+    });
+  } else {
+    const user = require('../mongoose/schema/user.js')
+    const ud = await user.findOne({ name: req.session.username })
+    await ud.updateOne({ inbox: [{ cid: req.body.cid }] }, { closed: true })
+    res.json({
+      title: "Success?",
+      description: "Wait what? I worked?",
+      icon: "success",
+    });
+  }
+})
 
 module.exports = router;

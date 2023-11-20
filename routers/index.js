@@ -43,7 +43,9 @@ router.get("/users", async (req, res) => {
           res.render("../views/users.ejs", {
            user: users,
            fqdn: process.env.fqdn,
-           userda: mongodbusr
+           userda: mongodbusr,
+           users: mongodbusr,
+
           });
         } else {
           res.redirect('/login')
@@ -65,7 +67,8 @@ router.get("/monitors", async (req, res) => {
         if (req.session.not_listd != mongodbusr) {
           res.render("../views/monitors.ejs", {
            fqdn: process.env.fqdn,
-           userda: mongodbusr
+           userda: mongodbusr,
+           users: mongodbusr,
           });
         } else {
           res.redirect('/login')

@@ -13,8 +13,6 @@ const connectLiveReload = require("connect-livereload");
 const asd = require('./utilities/cronchange')
 const app = express()
 
-console.log(asd("5m"))
-
 require('./utilities/FortKNOX')
 
 const liveReloadServer = livereload.createServer();
