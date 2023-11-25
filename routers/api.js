@@ -22,8 +22,7 @@ router.post("/monitor/:name/info", async (req, res) => {
 
 
 router.post("/monitor/:name/history", async (req, res) => {
-  let data = require("../mongoose/schema/uptime_array.js")
-  res.json(data.data)
+  return await UptimeArray.findOne({ name: req.params.name }).data
 });
 
 
@@ -31,9 +30,7 @@ router.post("/admin/monitor/add", async (req, res) => {
   const userdata = User.findOne({ name: req.session.username })
   const ua = new UptimeArray({
     name: req.body.name,
-    timestamp: Math.floor(Date.now() / 1000),
     status: [],
-    ping: 0,
   });
   const md = new monitordat({
     name: req.body.name,

@@ -22,7 +22,7 @@ async function monitorService() {
               await md.updateOne(conditions, update)
               await ua.updateOne({ name: element.name },
                   {
-                     $push: { data: { status: true, ping:  end - start, unix: dayjs() } }
+                     $push: { data: { status: true, ping:  end - start, unix: Date.now() } }
                   })
                const mdd = await md.findOne({ name: element.name })
                if (mdd.cert_check == true) {
@@ -70,7 +70,7 @@ async function monitorService() {
                md.updateOne(conditions, update)
                ua.updateOne({ name: element.name },
                   {
-                     $push: { data: { status: false, ping: 0, unix: dayjs() } }
+                     $push: { data: { status: false, ping: 0, unix: Date.now()} }
                   })
             } 
          })

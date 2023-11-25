@@ -2,662 +2,594 @@
 <html lang="en">
 
 <head>
-    <%- include('../templates/header.ejs') %>
+  <%- include('../templates/header.ejs') %>
 </head>
 
 <body class="bg-white dark:bg-zinc-900">
-    <!-- ========== HEADER ========== -->
-    <header
-        class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full  text-sm py-2.5 sm:py-4 lg:pl-64 bg-gray-200 backdrop-blur-md dark:bg-zinc-800">
-        <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
-            <div class="mr-5 lg:mr-0 lg:hidden">
-                <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Ambrosia">Ambrosia</a>
+  <!-- ========== HEADER ========== -->
+  <header class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full  text-sm py-2.5 sm:py-4 lg:pl-64 bg-gray-200 backdrop-blur-md dark:bg-zinc-800">
+    <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+      <div class="mr-5 lg:mr-0 lg:hidden">
+        <a class="flex-none text-xl font-semibold dark:text-white text-center" href="#" aria-label="Ambrosia">Ambrosia</a>
+      </div>
+
+      <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+        <div class="sm:hidden">
+          <button type="button" class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="hidden sm:block">
+          <label for="icon" class="sr-only">Search</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+              <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+              </svg>
             </div>
+            <input type="text" id="icon" name="icon" class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-gray-700 dark:text-gray-400" placeholder="Search">
+          </div>
+        </div>
 
-            <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
-                <div class="sm:hidden">
-                    <button type="button"
-                        class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
-                        <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="hidden sm:block">
-                    <label for="icon" class="sr-only">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
-                            <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </div>
-                        <input type="text" id="icon" name="icon"
-                            class="py-2 px-4 pl-11 block w-full border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-gray-700 dark:text-gray-400"
-                            placeholder="Search">
-                    </div>
-                </div>
-
-                <div class="flex flex-row items-center justify-end gap-2">
-                    <div class="hs-dropdown relative inline-flex [--placement:bottom-right] [--auto-close:inside]">
-                        <button id="hs-dropdown-with-header" type="button"
-                            class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
-                            <span class="material-symbols-rounded">
-                                inbox
-                            </span>
-                            <span
-                                class="absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white">
-                                <%= users.inbox.filter(a => a.closed == false).length %>
-                            </span>
-                        </button>
-
-                        <div class="hs-dropdown-menu transition-[opacity,margin] [--auto-close:inside] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2  dark:bg-zinc-700/30  dark:border dark:border-gray-700 backdrop-blur-md "
-                            aria-labelledby="hs-dropdown-with-header">
-                            
-                            <div class="mt-2 py-2 first:pt-0 last:pb-0 gap-5">
-                                <% if (users.inbox.filter(a => a.closed == false).length == 0) { %>
-                                     <p class="text-gray-300 text-center">Theres no mail!</p>
-                                    <% } %>
-                                        <% users.inbox.forEach( (ibox)=> { %>
-                                            <% if (ibox.type==="success" ) { %>
-                                                <% if (ibox.closed==false) { %>
-                                                    <div class="bg-green-50 border border-green-200 mb-1 text-sm text-green-600 rounded-md p-4 flex justify-between"
-                                                        role="alert">
-                                                        <div>
-                                                            <span class="font-bold">Success </span>
-                                                            <%= ibox.discription %>
-                                                        </div> 
-                                                        <button class="material-symbols-rounded" onclick="closeinbox(`<%= ibox.cid %>`)" id="<%= ibox.cid %>">
-                                                            close
-                                                        </button>
-                                                    </div>
-                                                    <% } %>
-                                                        <% } %>
-
-                                                            <% if (ibox.type==="error" ) { %>
-                                                                <div class="bg-red-50 border border-red-200 mb-1 text-sm text-red-600 rounded-md p-4"
-                                                                    role="alert">
-                                                                    <span class="font-bold">Error </span>
-                                                                    <%= ibox.discription %>
-                                                                </div>
-                                                                <% } %>
-
-                                                                    <% if (ibox.type==="warn" ) { %>
-                                                                        <div class="bg-orange-50 border border-orange-200 mb-1 text-sm text-orange-600 rounded-md p-4"
-                                                                            role="alert">
-                                                                            <span class="font-bold">Warning </span>
-                                                                            <%= ibox.discription %>
-                                                                        </div>
-                                                                        <% } %>
-
-                                                                            <% }) %>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button"
-                        class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
-                        data-hs-offcanvas="#hs-offcanvas-right">
-                        <a class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
-                            href="#!" data-hs-theme-click-value="dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                            </svg>
-
-                        </a>
-                        <a class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
-                            href="#!" data-hs-theme-click-value="light">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                            </svg>
-
-                        </a>
-                    </button>
-
-                    <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
-                        <button id="hs-dropdown-with-header" type="button"
-                            class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
-                            <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
-                                src="<%=users.avatar%>" alt="Image Description">
-                        </button>
-
-                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2  dark:bg-zinc-700/30  dark:border dark:border-gray-700 backdrop-blur-md"
-                            aria-labelledby="hs-dropdown-with-header">
-                            <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-zinc-700/50">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
-                                <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
-                                    <%= users.name %>
-                                </p>
-                            </div>
-                            <div class="mt-2 py-2 first:pt-0 last:pb-0">
-                                <% if (users.role=="Owner" ) { %>
-                                    <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-zinc-900/60 dark:hover:text-gray-300"
-                                        href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        </svg>
-                                        Settings
-                                    </a>
-                                    <% } %>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-zinc-900/60 dark:hover:text-gray-300"
-                                            href="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            </svg>
-
-                                            Profile
-                                        </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- ========== END HEADER ========== -->
-
-    <!-- ========== MAIN CONTENT ========== -->
-    <!-- Sidebar Toggle -->
-    <div
-        class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-zinc-700 dark:border-gray-700">
-        <div class="flex items-center py-4">
-            <!-- Navigation Toggle -->
-            <button type="button" class="text-gray-500 hover:text-gray-600" data-hs-overlay="#application-sidebar"
-                aria-controls="application-sidebar" aria-label="Toggle navigation">
-                <span class="sr-only">Toggle Navigation</span>
-                <svg class="w-5 h-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                </svg>
+        <div class="flex flex-row items-center justify-end gap-2">
+          <div class="hs-dropdown relative inline-flex [--placement:bottom-right] [--auto-close:inside]">
+            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+              <span class="material-symbols-rounded">
+                inbox
+              </span>
+              <span class="absolute top-0 right-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white">
+                <%= users.inbox.filter(a=> a.closed == false).length %>
+              </span>
             </button>
-            <!-- End Navigation Toggle -->
 
-            <!-- Breadcrumb -->
-            <ol class="ml-3 flex items-center whitespace-nowrap min-w-0" aria-label="Breadcrumb">
-                <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
-                    Application Layout
-                    <span class="material-symbols-rounded">
-                        home
+            <div class="hs-dropdown-menu transition-[opacity,margin] [--auto-close:inside] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2  dark:bg-zinc-700/30  dark:border dark:border-gray-700 backdrop-blur-md " aria-labelledby="hs-dropdown-with-header">
+
+              <div class="mt-2 py-2 first:pt-0 last:pb-0 gap-5">
+                <% if (users.inbox.filter(a=> a.closed == false).length == 0) { %>
+                <p class="text-gray-300 text-center">Theres no mail!</p>
+                <% } %>
+                <% users.inbox.forEach( (ibox)=> { %>
+                <% if (ibox.type==="success" ) { %>
+                <% if (ibox.closed==false) { %>
+                <div class="bg-green-50 border border-green-200 mb-1 text-sm text-green-600 rounded-md p-4 flex justify-between" role="alert">
+                  <div>
+                    <span class="font-bold">Success </span>
+                    <%= ibox.discription %>
+                  </div>
+                  <button class="material-symbols-rounded" onclick="closeinbox(`<%= ibox.cid %>`)" id="<%= ibox.cid %>">
+                    close
+                  </button>
+                </div>
+                <% } %>
+                <% } %>
+
+                <% if (ibox.type==="error" ) { %>
+                <div class="bg-red-50 border border-red-200 mb-1 text-sm text-red-600 rounded-md p-4" role="alert">
+                  <span class="font-bold">Error </span>
+                  <%= ibox.discription %>
+                </div>
+                <% } %>
+
+                <% if (ibox.type==="warn" ) { %>
+                <div class="bg-orange-50 border border-orange-200 mb-1 text-sm text-orange-600 rounded-md p-4" role="alert">
+                  <span class="font-bold">Warning </span>
+                  <%= ibox.discription %>
+                </div>
+                <% } %>
+
+                <% }) %>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800" data-hs-offcanvas="#hs-offcanvas-right">
+            <a class="hs-dark-mode-active:hidden block hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500" href="#!" data-hs-theme-click-value="dark">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+              </svg>
+
+            </a>
+            <a class="hs-dark-mode-active:block hidden hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500" href="#!" data-hs-theme-click-value="light">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+              </svg>
+
+            </a>
+          </button>
+
+          <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium bg-white text-gray-700 align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition-all text-xs dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800">
+              <img class="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="<%=users.avatar%>" alt="Image Description">
+            </button>
+
+            <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-white shadow-md rounded-lg p-2  dark:bg-zinc-700/30  dark:border dark:border-gray-700 backdrop-blur-md" aria-labelledby="hs-dropdown-with-header">
+              <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-zinc-700/50">
+                <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
+                <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
+                  <%= users.name %>
+                </p>
+              </div>
+              <div class="mt-2 py-2 first:pt-0 last:pb-0">
+                <% if (users.role=="Owner" ) { %>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-zinc-900/60 dark:hover:text-gray-300" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Settings
+                </a>
+                <% } %>
+                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-zinc-900/60 dark:hover:text-gray-300" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+
+                  Profile
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <!-- Sidebar Toggle -->
+  <div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-zinc-700 dark:border-gray-700">
+    <div class="flex items-center py-4">
+      <!-- Navigation Toggle -->
+      <button type="button" class="text-gray-500 hover:text-gray-600" data-hs-overlay="#application-sidebar" aria-controls="application-sidebar" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle Navigation</span>
+        <svg class="w-5 h-5" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>
+      </button>
+      <!-- End Navigation Toggle -->
+
+      <!-- Breadcrumb -->
+      <ol class="ml-3 flex items-center whitespace-nowrap min-w-0" aria-label="Breadcrumb">
+        <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
+          Application Layout
+          <span class="material-symbols-rounded">
+            home
+          </span>
+        </li>
+        <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
+          Dashboard
+        </li>
+      </ol>
+      <!-- End Breadcrumb -->
+    </div>
+  </div>
+  <!-- End Sidebar Toggle -->
+
+  <!-- Sidebar -->
+  <div id="application-sidebar" class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-gray-200 border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-zinc-800 b">
+    <div class="px-6">
+      <a class="flex-none text-xl font-semibold dark:text-white text-center" href="#" aria-label="Ambrosia">Ambrosia</a>
+    </div>
+
+    <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+      <ul class="space-y-1.5">
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white" href="/">
+            <span class="material-symbols-rounded">
+              home
+            </span>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white" href="/users">
+            <span class="material-symbols-rounded">
+              group
+            </span>
+            User
+          </a>
+        </li>
+
+
+        <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white" href="/monitors">
+          <span class="material-symbols-rounded"> monitor_heart </span>
+          Monitors
+        </a>
+        <li>
+          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:text-slate-400 dark:hover:text-slate-300" href="javascript:;">
+            <span class="material-symbols-rounded">
+              import_contacts
+            </span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- End Sidebar -->
+
+  <!-- Content -->
+  <div class="w-full pt-8 px-4 sm:px-6 md:px-8 lg:pl-72">
+    <!-- Page Heading -->
+    <header>
+      <!-- Card Section -->
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <!-- Grid -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Card -->
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
+            <div class="p-4 md:p-5 flex justify-between gap-x-3">
+              <div>
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  Total Monitors
+                </p>
+                <div class="mt-1 flex items-center gap-x-1">
+                  <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+                    <span class="font-semibold">10</span> <span class="text-gray-500">/ 50</span>
+                  </h3>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                <span class="material-symbols-rounded">
+                  monitor_heart
+                </span>
+              </div>
+            </div>
+
+            <a class="flex py-3 mt-5 px-4 md:px-5 inline-flex bottom-0 justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70" href="#">
+              View reports
+              <svg class="w-nown.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <!-- End Card -->
+
+          <!-- Card -->
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
+            <div class="p-4 md:p-5 flex justify-between gap-x-3">
+              <div>
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  Online
+                </p>
+                <div class="mt-1 flex items-center gap-x-1">
+                  <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+                    7
+                  </h3>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-green-300">
+                <span class="material-symbols-rounded">
+                  ecg_heart
+                </span>
+              </div>
+            </div>
+
+            <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70" href="#">
+              View reports
+              <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <!-- End Card -->
+
+          <!-- Card -->
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
+            <div class="p-4 md:p-5 flex justify-between gap-x-2">
+              <div>
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  Offline
+                </p>
+                <div class="mt-1 flex items-center gap-x-1">
+                  <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+                    4
+                  </h3>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-red-200">
+                <span class="material-symbols-rounded">
+                  ecg_heart
+                </span>
+              </div>
+            </div>
+
+            <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70" href="#">
+              View reports
+              <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <!-- End Card -->
+
+          <!-- Card -->
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
+            <div class="p-4 md:p-5 flex justify-between gap-x-3">
+              <div>
+                <p class="text-xs uppercase tracking-wide text-gray-500">
+                  Uptime Percentage
+                </p>
+                <div class="mt-1 flex items-center gap-x-1">
+                  <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+                    90%
+                  </h3>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
+                <span class="material-symbols-rounded">
+                  percent
+                </span>
+              </div>
+            </div>
+
+            <a class="py-3 bottom-0 mt-1 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70" href="#">
+              View reports
+              <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <!-- End Card -->
+        </div>
+        <!-- End Grid -->
+      </div>
+      <!-- End Card Section -->
+
+
+      <div class="max-w-[85rem] px-2 sm:px-3 lg:px-8 lg:py-3 mx-auto">
+        <div class="grid  gap-3">
+          <% monitor.forEach((data)=> { %>
+          <% const trueCount=data.data.filter(da=> da.status === true).length; %>
+          <% const falseCount=data.data.length - trueCount; %>
+          <% const truePercentage=(trueCount / data.data.length) * 100; %>
+          <% const falsePercentage=(falseCount / data.data.length) * 100; %>
+          <div class="flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
+            <div class="flex justify-between items-center">
+              <h1 class="text-2xl font-semibold dark:text-white">
+                <%= data.name %>
+              </h1>
+              <perc class="text-2xl text-gray-800 dark:text-gray-200">
+                <%=parseFloat(truePercentage).toFixed(1)%>%
+              </perc>
+            </div>
+            <div class="mt-2">
+              <div class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
+                <% data.data.forEach( (da)=> { %>
+                <% if (da.status==true) { %>
+                <div class="col-start-2 text-center">
+                  <div class="hs-tooltip ">
+                    <div class="bg-green-500 rounded-full h-7 w-3"></div>
+                    <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50" role="tooltip">
+                        <% const timestamp = da.unix; %>
+                       <% const date = new Date(timestamp / 1000); %>
+
+                      <%= da.ping %>ms | <%= formatHumanReadableDate(date) %>
                     </span>
-                </li>
-                <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
-                    Dashboard
-                </li>
-            </ol>
-            <!-- End Breadcrumb -->
-        </div>
-    </div>
-    <!-- End Sidebar Toggle -->
-
-    <!-- Sidebar -->
-    <div id="application-sidebar"
-        class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-gray-200 border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-zinc-800 b">
-        <div class="px-6">
-            <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Ambrosia">Ambrosia</a>
-        </div>
-
-        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-            <ul class="space-y-1.5">
-                <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
-                        href="/">
-                        <span class="material-symbols-rounded">
-                            home
-                        </span>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
-                        href="/users">
-                        <span class="material-symbols-rounded">
-                            group
-                        </span>
-                        User
-                    </a>
-                </li>
-
-
-                <a
-                class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
-                href="/monitors"
-              >
-                <span class="material-symbols-rounded"> monitor_heart </span>
-                Monitors
-              </a>
-                <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:text-slate-400 dark:hover:text-slate-300"
-                        href="javascript:;">
-                        <span class="material-symbols-rounded">
-                            import_contacts
-                        </span>
-                        Documentation
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <!-- End Sidebar -->
-
-    <!-- Content -->
-    <div class="w-full pt-10 px-4 sm:px-6 md:px-8 lg:pl-72">
-        <!-- Page Heading -->
-        <header>
-            <!-- Card Section -->
-            <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                <!-- Grid -->
-                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Total Monitors
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        <span class="font-semibold">10</span> <span class="text-gray-500">/ 50</span>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
-                                <span class="material-symbols-rounded">
-                                    monitor_heart
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Online
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        7
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-green-300">
-                                <span class="material-symbols-rounded">
-                                    ecg_heart
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Offline
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        4
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-red-200">
-                                <span class="material-symbols-rounded">
-                                    ecg_heart
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3 mt-5 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div
-                        class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-zinc-800/50 dark:border-zinc-800">
-                        <div class="p-4 md:p-5 flex justify-between gap-x-3">
-                            <div>
-                                <p class="text-xs uppercase tracking-wide text-gray-500">
-                                    Uptime Percentage
-                                </p>
-                                <div class="mt-1 flex items-center gap-x-1">
-                                    <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                                        90%
-                                    </h3>
-                                </div>
-                            </div>
-                            <div
-                                class="flex-shrink-0 flex justify-center items-center w-[46px] h-[46px] bg-blue-600 text-white rounded-full dark:bg-blue-900 dark:text-blue-200">
-                                <span class="material-symbols-rounded">
-                                    percent
-                                </span>
-                            </div>
-                        </div>
-
-                        <a class="py-3  px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 rounded-b-xl dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50 dark:hover:bg-zinc-900/70"
-                            href="#">
-                            View reports
-                            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path
-                                    d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                    <!-- End Card -->
+                  </div>
                 </div>
-                <!-- End Grid -->
+                <% } else { %>
+                <div class="bg-red-500 rounded-full h-7 w-3"></div>
+                <% } %>
+                <% }) %>
+              </div>
             </div>
-            <!-- End Card Section -->
-            <div class="max-w-[85rem] px-4 sm:px-3 lg:px-8 lg:py-3 mx-auto">
-                <div class="grid sm:grid-cols-1 md:sm-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-                    <div
-                        class=" flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-2xl font-semibold dark:text-white">Google</h1>
-                            <perc class="text-2xl text-gray-800 dark:text-gray-200">100%</perc>
-                        </div>
-                        <div class=" mt-2">
-                            <div
-                                class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-green-500 rounded-full h-7 w-3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class=" flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-2xl font-semibold dark:text-white">New Site</h1>
-                            <perc class="text-2xl text-gray-800 dark:text-gray-200">Unknown</perc>
-                        </div>
-                        <div class=" mt-2">
-                            <div
-                                class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-gray-500 rounded-full h-7 w-3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class=" flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
-                        <div class="flex justify-between items-center">
-                            <h1 class="text-2xl font-semibold dark:text-white">Roblox</h1>
-                            <perc class="text-2xl text-gray-800 dark:text-gray-200">0%</perc>
-                        </div>
-                        <div class=" mt-2">
-                            <div
-                                class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                                <div class="bg-red-500 rounded-full h-7 w-3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+          </div>
+          <% }) %>
+          <%
+          function formatHumanReadableDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+          }
+          %>
+          <div class=" flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
+            <div class="flex justify-between items-center">
+              <h1 class="text-2xl font-semibold dark:text-white">New Site</h1>
+              <perc class="text-2xl text-gray-800 dark:text-gray-200">Unknown
+              </perc>
+            </div>
+            <div class=" mt-2">
+              <div class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
+                <div class="bg-gray-500 rounded-full h-7 w-3">
                 </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-gray-500 rounded-full h-7 w-3">
+                </div>
+              </div>
             </div>
-
-    </div>
+          </div>
+          <div class=" flex flex-col bg-white border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
+            <div class="flex justify-between items-center">
+              <h1 class="text-2xl font-semibold dark:text-white">Roblox</h1>
+              <perc class="text-2xl text-gray-800 dark:text-gray-200">0%</perc>
+            </div>
+            <div class=" mt-2">
+              <div class="dark:bg-zinc-700/50 flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+                <div class="bg-red-500 rounded-full h-7 w-3">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 </body>
 <script>
-    const HSThemeAppearance = {
-        init() {
-            const defaultTheme = 'default'
-            let theme = localStorage.getItem('hs_theme') || defaultTheme
+  const HSThemeAppearance = {
+    init() {
+      const defaultTheme = 'default'
+      let theme = localStorage.getItem('hs_theme') || defaultTheme
 
-            if (document.querySelector('html').classList.contains('dark')) return
-            this.setAppearance(theme)
-        },
-        _resetStylesOnLoad() {
-            const $resetStyles = document.createElement('style')
-            $resetStyles.innerText = `*{transition: unset !important;}`
-            $resetStyles.setAttribute('data-hs-appearance-onload-styles', '')
-            document.head.appendChild($resetStyles)
-            return $resetStyles
-        },
-        setAppearance(theme, saveInStore = true, dispatchEvent = true) {
-            const $resetStylesEl = this._resetStylesOnLoad()
+      if (document.querySelector('html').classList.contains('dark')) return
+      this.setAppearance(theme)
+    },
+    _resetStylesOnLoad() {
+      const $resetStyles = document.createElement('style')
+      $resetStyles.innerText = `*{transition: unset !important;}`
+      $resetStyles.setAttribute('data-hs-appearance-onload-styles', '')
+      document.head.appendChild($resetStyles)
+      return $resetStyles
+    },
+    setAppearance(theme, saveInStore = true, dispatchEvent = true) {
+      const $resetStylesEl = this._resetStylesOnLoad()
 
-            if (saveInStore) {
-                localStorage.setItem('hs_theme', theme)
-            }
+      if (saveInStore) {
+        localStorage.setItem('hs_theme', theme)
+      }
 
-            if (theme === 'auto') {
-                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
-            }
+      if (theme === 'auto') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+      }
 
-            document.querySelector('html').classList.remove('dark')
-            document.querySelector('html').classList.remove('default')
-            document.querySelector('html').classList.remove('auto')
+      document.querySelector('html').classList.remove('dark')
+      document.querySelector('html').classList.remove('default')
+      document.querySelector('html').classList.remove('auto')
 
-            document.querySelector('html').classList.add(this.getOriginalAppearance())
+      document.querySelector('html').classList.add(this.getOriginalAppearance())
 
-            setTimeout(() => {
-                $resetStylesEl.remove()
-            })
+      setTimeout(() => {
+        $resetStylesEl.remove()
+      })
 
-            if (dispatchEvent) {
-                window.dispatchEvent(new CustomEvent('on-hs-appearance-change', { detail: theme }))
-            }
-        },
-        getAppearance() {
-            let theme = this.getOriginalAppearance()
-            if (theme === 'auto') {
-                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
-            }
-            return theme
-        },
-        getOriginalAppearance() {
-            const defaultTheme = 'default'
-            return localStorage.getItem('hs_theme') || defaultTheme
-        }
+      if (dispatchEvent) {
+        window.dispatchEvent(new CustomEvent('on-hs-appearance-change', {
+          detail: theme
+        }))
+      }
+    },
+    getAppearance() {
+      let theme = this.getOriginalAppearance()
+      if (theme === 'auto') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'
+      }
+      return theme
+    },
+    getOriginalAppearance() {
+      const defaultTheme = 'default'
+      return localStorage.getItem('hs_theme') || defaultTheme
     }
-    HSThemeAppearance.init()
+  }
+  HSThemeAppearance.init()
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (HSThemeAppearance.getOriginalAppearance() === 'auto') {
-            HSThemeAppearance.setAppearance('auto', false)
-        }
-    })
-
-    window.addEventListener('load', () => {
-        const $clickableThemes = document.querySelectorAll('[data-hs-theme-click-value]')
-        const $switchableThemes = document.querySelectorAll('[data-hs-theme-switch]')
-
-        $clickableThemes.forEach($item => {
-            $item.addEventListener('click', () => HSThemeAppearance.setAppearance($item.getAttribute('data-hs-theme-click-value'), true, $item))
-        })
-
-        $switchableThemes.forEach($item => {
-            $item.addEventListener('change', (e) => {
-                HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
-            })
-
-            $item.checked = HSThemeAppearance.getAppearance() === 'dark'
-        })
-
-        window.addEventListener('on-hs-appearance-change', e => {
-            $switchableThemes.forEach($item => {
-                $item.checked = e.detail === 'dark'
-            })
-        })
-    })
-
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'bottom-right',
-        customClass: {
-            popup: 'colored-toast'
-        },
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true
-    })
-
-    function closeinbox(cid) {
-     axios.post("/api/inbox/delete", { cid: cid }).then( (response) => {
-        Swal.fire({
-         title: response.data.title,
-         text: response.data.decription,
-         icon: response.data.icon
-         })
-         console.log("Gay Sex :D")
-     })
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (HSThemeAppearance.getOriginalAppearance() === 'auto') {
+      HSThemeAppearance.setAppearance('auto', false)
     }
+  })
 
+  window.addEventListener('load', () => {
+    const $clickableThemes = document.querySelectorAll('[data-hs-theme-click-value]')
+    const $switchableThemes = document.querySelectorAll('[data-hs-theme-switch]')
+
+    $clickableThemes.forEach($item => {
+      $item.addEventListener('click', () => HSThemeAppearance.setAppearance($item.getAttribute('data-hs-theme-click-value'), true, $item))
+    })
+
+    $switchableThemes.forEach($item => {
+      $item.addEventListener('change', (e) => {
+        HSThemeAppearance.setAppearance(e.target.checked ? 'dark' : 'default')
+      })
+
+      $item.checked = HSThemeAppearance.getAppearance() === 'dark'
+    })
+
+    window.addEventListener('on-hs-appearance-change', e => {
+      $switchableThemes.forEach($item => {
+        $item.checked = e.detail === 'dark'
+      })
+    })
+  })
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-right',
+    customClass: {
+      popup: 'colored-toast'
+    },
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true
+  })
+
+  function closeinbox(cid) {
+    axios.post("/api/inbox/delete", {
+      cid: cid
+    }).then((response) => {
+      Swal.fire({
+        title: response.data.title,
+        text: response.data.decription,
+        icon: response.data.icon
+      })
+    })
+  }
 </script>
 
 </html>

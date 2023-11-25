@@ -4,6 +4,7 @@ const fs = require("fs");
 const user = require("../mongoose/schema/user");
 const router = express.Router();
 const hostsettings = require("../mongoose/schema/hostconfiguration");
+const monitors = require('../mongoose/schema/uptime_array')
 
 router.get("/", async (req, res) => {
   
@@ -14,11 +15,13 @@ router.get("/", async (req, res) => {
       if (!req.session.not_listd) {
         res.redirect('/login')
       } else {
+        const monitor = await monitors.find()
         let mongodbusr = await user.findOne({ name: req.session.username });
         if (req.session.not_listd != mongodbusr) {
           res.render("../views/index.ejs", {
             users: mongodbusr,
-            fqdn: process.env.fqdn
+            fqdn: process.env.fqdn,
+            monitor: monitor
           });
           console.log(mongodbusr)
         } else {
