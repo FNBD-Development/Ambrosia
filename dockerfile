@@ -1,5 +1,5 @@
 FROM oven/bun:latest
-WORKDIR /Ambrosia
+WORKDIR /opt/Ambrosia
 COPY . .
 CMD ["bun", "install", "&&", "bun", "."]
-EXPOSE 3012
+EXPOSE 3295

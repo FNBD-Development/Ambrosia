@@ -1,9 +1,9 @@
-import { password } from "bun";
 const dayjs = require("dayjs");
 const express = require("express");
 const fs = require("fs");
 const passwordgen = require("../utilities/password_gen");
 const Jimp = require("jimp");
+const os = require('os')
 //import chalk from "chalk";
 
 /* Schemas */

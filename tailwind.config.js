@@ -1,8 +1,8 @@
-/*
- This is way to fucking hard
- tailwind configs are shitty
- Procead with caution!!!
-*/
+/** 
+ * ! This is way to fucking hard
+ * ! tailwind configs are shitty
+ * ! Procead with caution!!!
+**/
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,7 +15,7 @@ export default {
     extend: {},
   },
   plugins: [
-    require('preline/plugin') // Preline Cause I Hate HTML
+    require('preline/plugin') 
   ],
 }
 
