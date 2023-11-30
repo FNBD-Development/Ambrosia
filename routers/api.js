@@ -278,4 +278,10 @@ router.post("/inbox/delete/", async (req, res) => {
   }
 })
 
+router.get('/download/agent/:Domain', () => {
+  if (req.params.Domain) {
+    
+  }
+})
+
 module.exports = router;

@@ -112,8 +112,8 @@ router.get("/host", async (req, res) => {
            userda: mongodbusr,
            users: mongodbusr,
            req, 
-           res
-           
+           res,
+           os: require('os')
           });
         } else {
           res.redirect('/login')

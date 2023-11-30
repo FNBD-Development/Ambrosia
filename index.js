@@ -59,7 +59,7 @@ if (fs.existsSync('updating.env')) {
 
 app.use((req, res, next) => {
   res.status(404).render(__dirname+'/views/errors/duckrender404.ejs', {
-
+    
   })
 })
 

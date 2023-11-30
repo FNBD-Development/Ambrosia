@@ -1,0 +1,175 @@
+<div id="application-sidebar"
+class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 left-0 bottom-0 z-[60] w-64 bg-gray-200 border-gray-200 pt-7 pb-10 overflow-y-auto scrollbar-y lg:block lg:translate-x-0 lg:right-auto lg:bottom-0 dark:scrollbar-y dark:bg-zinc-800 b">
+<div class="px-6">
+    <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Ambrosia">Ambrosia</a>
+</div>
+
+<nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+    <ul class="space-y-1.5">
+        <% if ( req.path == "/" ) { %>
+            <li>
+                <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                    href="/">
+                    <span class="material-symbols-rounded">
+                        home
+                    </span>
+                    Dashboard
+                </a>
+            </li>
+            <% } else {%>
+                <li>
+                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                        href="/">
+                        <span class="material-symbols-rounded">
+                            home
+                        </span>
+                        Dashboard
+                    </a>
+                </li>
+                <% } %>
+                <% if ( req.path == "/users" ) { %>
+
+                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                        href="/users">
+                        <span class="material-symbols-rounded">
+                            group
+                        </span>
+                        Users
+                    </a>
+                    </li>
+                    <% } else {%>
+                        <li>
+                            <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                                href="/users">
+                                <span class="material-symbols-rounded">
+                                    group
+                                </span>
+                                Users
+                            </a>
+                        </li>
+                        <% } %>
+                <li class="hs-accordion" id="status-accordion">
+                    <button type="button" class="hs-accordion-toggle w-full text-start flex items-center py-2 px-2.5 gap-x-3.5  hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-gray-100  dark:bg-zinc-800 dark:hover:bg-zinc-900/80 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                        <span class="material-symbols-rounded">
+                            monitor_heart
+                        </span>
+                        Status Tools
+          
+                      <svg class="hs-accordion-active:block ms-auto hidden w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+          
+                      <svg class="hs-accordion-active:hidden ms-auto block w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+          
+                    <div id="status-accordion-sub" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+                      <ul class="pt-2 ps-2 ml-2 bg-zinc-800">
+
+                                        <% if ( req.path == "/monitors" ) { %>
+                            <li>
+                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                                    href="/monitors">
+                                    <span class="material-symbols-rounded"> monitor_heart </span>
+                                    Monitors
+                                </a>
+                            </li>
+                                <% } else {%>
+                                    <li>
+                                        <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                                            href="/monitors">
+                                            <span class="material-symbols-rounded">
+                                                monitor_heart
+                                            </span>
+                                            Monitors
+                                        </a>
+                                    </li>
+                                    <% } %>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <li class="hs-accordion" id="servers-accordion">
+                    <button type="button" class="hs-accordion-toggle w-full text-start flex items-center py-2 px-2.5 gap-x-3.5  hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-gray-100  dark:bg-zinc-800 dark:hover:bg-zinc-900/80 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+                        <span class="material-symbols-rounded">
+                            cloud
+                        </span>
+                        Server Manager
+          
+                      <svg class="hs-accordion-active:block ms-auto hidden w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+          
+                      <svg class="hs-accordion-active:hidden ms-auto block w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+          
+                    <div id="status-accordion-sub" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
+                      <ul class="pt-2 ps-2 ml-2 bg-zinc-800">
+
+                                        <% if ( req.path == "/host" ) { %>
+                            <li>
+                                <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                                    href="/host">
+                                    <span class="material-symbols-rounded"> dns </span>
+                                    Server Manager Home
+                                </a>
+                            </li>
+                                <% } else {%>
+                                    <li>
+                                        <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                                        href="/host">
+                                        <span class="material-symbols-rounded"> dns </span>
+                                        Server Manager Home
+                                        </a>
+                                    </li>
+                                    <% } %>
+
+                                    <% if ( req.path == "/host/new_node" ) { %>
+                                        <li>
+                                            <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                                                href="/host/new_node">
+                                                <span class="material-symbols-rounded"> dns </span>
+                                                Server Nodes
+                                            </a>
+                                        </li>
+                                            <% } else {%>
+                                                <li>
+                                                    <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                                                    href="/host/new_node">
+                                                    <span class="material-symbols-rounded"> dns </span>
+                                                    Server Nodes
+                                                    </a>
+                                                </li>
+                                                <% } %>
+
+                                                <% if ( req.path == "/host/new_node" ) { %>
+                                                    <li>
+                                                        <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
+                                                            href="/host/new_node">
+                                                            <span class="material-symbols-rounded"> dns </span>
+                                                            Node Details
+                                                        </a>
+                                                    </li>
+                                                        <% } else {%>
+                                                            <li>
+                                                                <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
+                                                                href="/host/new_node">
+                                                                <span class="material-symbols-rounded"> dns </span>
+                                                                Node Details
+                                                                </a>
+                                                            </li>
+                                                            <% } %>
+                      </ul>
+                    </div>
+                  </li>
+          
+                
+           <li>
+            <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:text-slate-400 dark:hover:text-slate-300"
+                href="javascript:;">
+                <span class="material-symbols-rounded">
+                    import_contacts
+                </span>
+                Documentation
+            </a>
+        </li>
+    
+
+
+</nav>
+</div>
