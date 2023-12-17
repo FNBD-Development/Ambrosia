@@ -1,4 +1,5 @@
 /*
+! Deprecated due to brcrypt and is never used
 Name: FortKNOX 
 General Description: FortKNOX, inspired from samsaung knox is a encryption algo
 Date: Wed 9:14PM GMT+6:30 November 1st
@@ -11,7 +12,7 @@ it works by sharing a key
 the Server behind the api is responsible for the keeping of the data,
 its basically a version of 2fa, WPA, BCrypt,      
 */
-
+/*
 const bcrypt = require("bcrypt");
 const twofactor = require("node-2fa");
 const fkdb = require("../mongoose/schema/fortknox");
@@ -72,3 +73,4 @@ function verify(totpToken, base64Key) {
 }
 
 module.exports = { createUnique, verify };
+*/

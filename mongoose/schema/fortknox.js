@@ -1,3 +1,5 @@
+/*
+! Deprecation due to ~/utilites/FortKNOX.js never used
 const mongoose = require('mongoose');
 
 const fortknox = new mongoose.Schema(
@@ -11,3 +13,4 @@ const fortknox = new mongoose.Schema(
 const fortknoxs = mongoose.model('fortknox', fortknox);
 
 module.exports = fortknoxs
+*/
