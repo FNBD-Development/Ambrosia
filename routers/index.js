@@ -16,11 +16,11 @@ router.get("/", async (req, res) => {
         res.redirect('/login')
       } else {
         const monitor = await monitors.find()
-        let mongodbusr = await user.findOne({ name: req.session.username });
+      let mongodbusr = await user.findOne({ name: req.session.username });
         if (req.session.not_listd != mongodbusr) {
           res.render("../views/index.ejs", {
             users: mongodbusr,
-            fqdn: process.env.fqdn,
+            fqdn: process.env.fqdn, 
             monitor: monitor,
             req, 
             res
@@ -67,6 +67,8 @@ router.get("/monitors", async (req, res) => {
     res.render("../SmartWiz/index.ejs", {});
     } else {
       const mongodbusr = await user.findOne({ name: req.session.username });
+      const monitor = await monitors.find()
+
       if (!req.session.not_listd) {
         res.redirect('/login')
       } else {
@@ -75,6 +77,7 @@ router.get("/monitors", async (req, res) => {
            fqdn: process.env.fqdn,
            userda: mongodbusr,
            users: mongodbusr,
+           monitor: monitor,
            req, 
            res
           });

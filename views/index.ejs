@@ -230,7 +230,7 @@
                 </p>
                 <div class="mt-1 flex items-center gap-x-1">
                   <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    <span class="font-semibold">10</span> <span class="text-gray-500">/ 50</span>
+                    <span class="font-semibold"><%=monitor.length%></span>
                   </h3>
                 </div>
               </div>
@@ -254,7 +254,7 @@
                 </p>
                 <div class="mt-1 flex items-center gap-x-1">
                   <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    7
+                    <%= monitor.filter((m) => m.data[0].status === true ).length %>
                   </h3>
                 </div>
               </div>
@@ -279,7 +279,7 @@
                 </p>
                 <div class="mt-1 flex items-center gap-x-1">
                   <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    4
+                    <%= monitor.filter((m) => m.data[0].status === false ).length %>
                   </h3>
                 </div>
               </div>
@@ -302,7 +302,7 @@
                 </p>
                 <div class="mt-1 flex items-center gap-x-1">
                   <h3 class="mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                    90%
+                    <%= (monitor.filter((m) => m.data[0].status === true ).length / monitor.length) * 100; %>%
                   </h3>
                 </div>
               </div>
@@ -325,17 +325,17 @@
 
       <div class="max-w-[85rem] px-2 sm:px-3 lg:px-8 lg:py-3 mx-auto">
         <div class="grid sm:grid-cols-1 md:sm-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-3">
-          <% monitor.forEach((data)=> { %>
-            <% const trueCount=data.data.filter(da=> da.status === true).length; %>
-              <% const falseCount=data.data.length - trueCount; %>
-                <% const truePercentage=(trueCount / data.data.length) * 100; %>
-                  <% const falsePercentage=(falseCount / data.data.length) * 100; %>
+          <% monitor.forEach( (data) => { %>
+            <% let trueCount=data.data.filter(da=> da.status === true).length; %>
+              <% let falseCount=data.data.length - trueCount; %>
+                <% let truePercentage=(trueCount / data.data.length) * 100; %>
+                  <% let falsePercentage=(falseCount / data.data.length) * 100; %>
 
                     <div
                       class="flex flex-col bg-[#f3f3f3] border shadow-sm rounded-md dark:bg-zinc-800/50 dark:border-zinc-800 p-4">
                       <div class="flex justify-between items-center">
                         <h1 class="text-2xl font-semibold dark:text-white">
-                          <%= data.name %>
+                          <%= data.name %>let
                         </h1>
                         <perc class="text-2xl text-gray-800 dark:text-gray-200">
                           <%= truePercentage.toFixed(1) %>%
@@ -343,27 +343,32 @@
                       </div>
                       <div class="mt-2">
                         <div class="dark:bg-zinc-700/50 bg-[#e6e6e6] flex items-center gap-1 dark:border-zinc-900 p-2 rounded-md">
-                          <% const blobsPerRow=17; %>
-                            <% const totalBlobCount=Math.min(blobsPerRow, data.data.length); %>
-                              <% for (let i=0; i < blobsPerRow; i++) { %>
-                                <% const dataIndex=i < totalBlobCount ? i : i - (data.data.length - totalBlobCount); %>
-                                  <% const da=data.data[dataIndex]; %>
-                                    <% const isTrueBlob=da && da.status===true; %>
-                                      <div class="relative">
-                                        <div class="hs-tooltip ">
-                                          <div
-                                            class="<%= isTrueBlob ? 'bg-green-500' : 'bg-red-500' %> rounded-full h-7 w-3">
-                                          </div> <span
-                                            class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50"
-                                            role="tooltip">
-                                            <% const timestamp=da.unix; %>
-                                              <% const date=new Date(timestamp / 1000); %>
-                                                <%= da.ping %>ms | <%= formatHumanReadableDate(date) %>
-                                          </span>
-                                        </div>
-                                      </div>
-                                      <% } %>
+                          <% let blobsPerRow = 17; %>
+                          <% let totalBlobCount = Math.min(blobsPerRow, data.data.length); %>
+                          <% for (let i = 0; i < blobsPerRow; i++) { %>
+                            <% let dataIndex = i < totalBlobCount ? i : i - (data.data.length - totalBlobCount); %>
+                            <% let da = data.data[dataIndex]; %>
+    
+                            <% let isTrueBlob = da && da.status === true; %>
+                            <div class="relative">
+                              <div class="hs-tooltip">
+                                <div class="<%= isTrueBlob ? 'bg-green-500' : 'bg-red-500' %> rounded-full h-7 w-3"></div>
+                                <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm dark:border-gray-700 dark:text-gray-400 dark:bg-zinc-900/50" role="tooltip">
+                                  <% if (da && da.unix) { %>
+                                    <% let timestamp = da.unix; %>
+                                    <% let date = new Date(timestamp / 1000); %>
+                                    <%= da.ping %>ms | <%= formatHumanReadableDate(date) %>
+                                  <% } else { %>
+                                    <!-- Handle the case where 'unix' is undefined or not present -->
+                                    <!-- You can add a default value or skip rendering this part -->
+                                    <span class="<%= isTrueBlob ? 'text-gray-500' : 'text-gray-500' %>">N/A</span>
+                                  <% } %>
+                                </span>
+                              </div>
+                            </div>
+                          <% } %>
                         </div>
+                        
                       </div>
                     </div>
                     <% }) %>
