@@ -8,7 +8,9 @@
   "scripts": {
     "build:css": "tailwindcss -i \"./assets/css/styles.css\" -o \"./assets/css/tailwind.css\" ",
     "dev": "NODE_ENV=dev && bun run dev:css & bun .",
-    "dev:css": "tailwindcss -i \"./assets/css/styles.css\" -o \"./assets/css/tailwind.css\" --watch "
+    "dev:css": "tailwindcss -i \"./assets/css/styles.css\" -o \"./assets/css/tailwind.css\" --watch ",
+    "dev:css_light_login": "tailwindcss -i \"./assets/css/styles_light_login.css\" -o \"./assets/css/tailwind_light_login.css\" --watch ",
+    "dev:css_dark_login": "tailwindcss -i \"./assets/css/styles_dark_login.css\" -o \"./assets/css/tailwind_dark_login.css\" --watch "
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

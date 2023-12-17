@@ -205,7 +205,7 @@
             <div class="grid sm:grid-cols-1 md:sm-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
                 <% user.forEach( (usr) => { %>
                 <div
-                class=" focus:z-10 focus:border-blue-500 bg-gray-300 focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
+                class=" focus:z-10 focus:border-blue-500 bg-[#f3f3f3] focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
                 <div class="flex justify-start">
                     <img class="inline-block  rounded-md ring-2 ring-white dark:ring-gray-800"
                         src="<%= usr.avatar %>"
@@ -225,7 +225,7 @@
             </div>
             <% }) %>
                 <div
-                    class=" focus:z-10 focus:border-blue-500 bg-gray-300 focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
+                    class=" focus:z-10 focus:border-blue-500 bg-[#f3f3f3] focus:ring-blue-500 dark:bg-zinc-700/50 dark:border-gray-700 dark:text-gray-400 rounded-md p-5">
                     <div class="flex justify-start">
                         <div class="hs-tooltip inline-block [--placement:bottom]">
                             <button class="hs-tooltip-toggle" onclick="adduser()">
@@ -242,7 +242,7 @@
                         </div>
 
                         <div>
-                            <input type="text" class="text-2xl block w-[23%] rounded-md ml-2 bg-transparent"
+                            <input type="text" class="text-2xl block w-8 rounded-md ml-2 bg-transparent"
                                 placeholder="Name" id="name">
 
                             <select class="w-[28%] block bg-transparent ml-2 mt-1" id="role">

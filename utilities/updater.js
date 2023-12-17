@@ -57,16 +57,16 @@ async function checkForUpdates() {
           });
 
           rl.question(
-            chalk.green("[ UPDATER ]" + chalk.blue(" An update is available. Do you want to update and reboot? (yes/no): ")),
+            chalk.green("[UPDATER]" + chalk.blue(" An update is available. Do you want to update and reboot? (yes/no): ")),
             (answer) => {
               if (answer.toLowerCase() === "yes") {
-                console.log(chalk.green("[ UPDATER ] ") + chalk.green(" Updating and rebooting..."));
+                console.log(chalk.green("[ UPDATER] ") + chalk.green(" Updating and rebooting..."));
                 fs.rename(".env", "updating.env", () => {
-                  console.log(chalk.green("[ UPDATER ] ") + chalk.blue(".ENV Renamed to updating.ENV !"));
+                  console.log(chalk.green("[ UPDATER] ") + chalk.blue(".ENV Renamed to updating.ENV !"));
                 });
                 exec("git pull && bun install", (error, stdout, stderr) => {
                   if (error) {
-                    console.error(chalk.green('[ UPDATER ]') + chalk.red(` Error updating and rebooting: ${error}`));
+                    console.error(chalk.green('[ UPDATER]') + chalk.red(` Error updating and rebooting: ${error}`));
                   } else {
                     console.log(stdout);
                   }
@@ -89,12 +89,11 @@ async function checkForUpdates() {
                       }
                     );
                   });
-                  process.exit();
-                }, 1000);
+                }, 8000);
               } else {
             }
             
-            console.log(chalk.green('[ UPDATER ]') + chalk.red("  No update performed."));
+            console.log(chalk.green('[ UPDATER]') + chalk.red("  No update performed."));
               rl.close();
             }
           );

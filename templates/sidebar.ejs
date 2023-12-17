@@ -61,7 +61,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                     </button>
           
                     <div id="status-accordion-sub" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-                      <ul class="pt-2 ps-2 ml-2 bg-zinc-800">
+                      <ul class="pt-2 ps-2 ml-2 bg-gray-200 dark:bg-zinc-800">
 
                                         <% if ( req.path == "/monitors" ) { %>
                             <li>
@@ -99,13 +99,13 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                     </button>
           
                     <div id="status-accordion-sub" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden">
-                      <ul class="pt-2 ps-2 ml-2 bg-zinc-800">
+                      <ul class="pt-2 ps-2 ml-2 bg-gray-200 dark:bg-zinc-800">
 
                                         <% if ( req.path == "/host" ) { %>
                             <li>
                                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
                                     href="/host">
-                                    <span class="material-symbols-rounded"> dns </span>
+                                    <i class="fa-regular fa-server"></i>  
                                     Server Manager Home
                                 </a>
                             </li>
@@ -113,7 +113,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                                     <li>
                                         <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
                                         href="/host">
-                                        <span class="material-symbols-rounded"> dns </span>
+                                        <i class="fa-regular fa-server fa-xl"></i>
                                         Server Manager Home
                                         </a>
                                     </li>
@@ -123,7 +123,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                                         <li>
                                             <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
                                                 href="/host/new_node">
-                                                <span class="material-symbols-rounded"> dns </span>
+                                                <i class="fa-regular fa-server fa-xl"></i>
                                                 Server Nodes
                                             </a>
                                         </li>
@@ -131,7 +131,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                                                 <li>
                                                     <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
                                                     href="/host/new_node">
-                                                    <span class="material-symbols-rounded"> dns </span>
+                                                    <i class="fa-regular fa-server fa-xl"></i>
                                                     Server Nodes
                                                     </a>
                                                 </li>
@@ -141,7 +141,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                                                     <li>
                                                         <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-zinc-900/80 dark:text-white"
                                                             href="/host/new_node">
-                                                            <span class="material-symbols-rounded"> dns </span>
+                                                            <i class="fa-regular fa-server fa-xl"></i>
                                                             Node Details
                                                         </a>
                                                     </li>
@@ -149,7 +149,7 @@ class="hs-overlay hs-overlay-open:translate-x-0 -translate-x-full transition-all
                                                             <li>
                                                                 <a class="hs-accordion-toggle flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-900/80 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white"
                                                                 href="/host/new_node">
-                                                                <span class="material-symbols-rounded"> dns </span>
+                                                                <i class="fa-regular fa-server fa-xl"></i>
                                                                 Node Details
                                                                 </a>
                                                             </li>

@@ -89,7 +89,7 @@ router.get("/login", async (req, res) => {
   if (hostconfigs.length == []) {
     res.render("../SmartWiz/index.ejs", {});
   } else {
-    res.render("../views/login.ejs", {});
+    res.render("../views/login.ejs", {  });
   }
 });
 

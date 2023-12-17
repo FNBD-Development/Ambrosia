@@ -10,7 +10,7 @@ const MongoStore = require('connect-mongo');
 const fileUpload = require('express-fileupload')
 const livereload = require("livereload");
 const connectLiveReload = require("connect-livereload");
-const asd = require('./utilities/cronchange')
+const PORT = process.env.PORT || 3341
 const app = express()
 
 require('./utilities/FortKNOX')
@@ -65,7 +65,6 @@ app.use((req, res, next) => {
 
 
 // Nothing Much Below
-const PORT = process.env.PORT || 3341
 app.listen(PORT, (server) => {
   if (env.NODE_ENV == "dev") {
     setTimeout(function() {

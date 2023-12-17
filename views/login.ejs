@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include('../templates/header.ejs') %>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambrosia | Management Made Simple.</title>
+<link rel="stylesheet" href="/assets/css/tailwind_light_login.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<meta content="Ambrosia" property="og:title" />
+<meta content="Ambrosia is a multiperpose Status Monitor" property="og:description" />
+<meta content="https://<%=process.env.fqdn%>" property="og:url" />
+<meta content="#43B581" data-react-helmet="true" name="theme-color" />
+<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"/>
   </head>
 
-  <html class="w-full">
-    <body class="dark:bg-zinc-900 bg-gray-100 flex h-full items-center py-16">
-      <main class="w-full max-w-md mx-auto p-6 h-full">
+  <html class="">
+    <body class="flex  bg-white items-center py-16 justify-center m-0">
+          <main class="flex flex-col items-center  justify-center relative z-10 max-w-md mx-auto p-6">
+          
         <div
-          class="mt-7 bg-gray-200 border border-gray-200 rounded-xl shadow-sm dark:bg-zinc-800 dark:border-gray-700"
+          class="mt-7 bg-gray-200 border border-gray-300 rounded-xl  dark:bg-zinc-800 dark:border-zinc-900/80"
         >
           <div class="p-4 sm:p-7">
             <div class="text-left flex items-center justify-between">
               <h1
-                class="block text-2xl font-bold text-gray-800 dark:text-white"
+                class="block text-2xl font-bold mr-5 text-gray-800 dark:text-white"
               >
                 Sign in
               </h1>
@@ -21,7 +34,7 @@
               <button
                 disabled
                 type="button"
-                class="flex items-center cursor-not-allowed py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-zinc-700/80 dark:hover:bg-zinc-700/60 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                class="flex items-center cursor-not-allowed py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-zinc-700/80 dark:hover:bg-zinc-700/60 dark:border-zinc-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-zinc-800"
               >
                 <span class="material-symbols-rounded"> devices </span>
                 Sign in using random id
@@ -47,7 +60,7 @@
                       type="name"
                       id="name"
                       name="email"
-                      class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-gray-700 dark:text-gray-400"
+                      class="py-3 px-4 block w-full bg-[#fafafa] border-gray-300 border rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-zinc-700 dark:text-gray-400"
                       required
                       aria-describedby="email-error"
                     />
@@ -88,7 +101,7 @@
                       type="password"
                       id="password"
                       name="password"
-                      class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-gray-700 dark:text-gray-400"
+                      class="py-3 px-4 block w-full bg-[#fafafa] border-gray-300 border rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-zinc-700/50 dark:hover:bg-zinc-700/30 dark:border-zinc-700 dark:text-gray-400"
                       required
                       aria-describedby="password-error"
                     />
@@ -140,7 +153,7 @@
                 <button
                   type="submit"
                   onclick="login()"
-                  class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                  class="py-3 px-4 inline-flex justify-center  items-center gap-2 rounded-md border border-blue-500/80 font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                 >
                   Sign in
                 </button>
@@ -152,6 +165,8 @@
         </div>
     </div>
       </main>
+    </div>
+  </div>
     </body>
   </html>
   <script>
@@ -354,4 +369,16 @@
       }
     }
   </script>
+      <script>
+        // Check localStorage for the theme preference
+        var theme = localStorage.getItem('hs-theme');
+
+        // If no theme preference is found, default to 'light'
+        if (!theme) {
+            theme = 'light';
+        }
+
+        // Apply the current theme to the document
+        document.documentElement.classList.add(theme);
+    </script>
 </html>
