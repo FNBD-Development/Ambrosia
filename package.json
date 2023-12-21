@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "turbo": "^1.11.2",
+    "@ambosia": "/src/*"
+  },
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier \"**/*.{ts,tsx,md}\"",
+    "setup": "turbo run setup"
+  },
+  "workspaces": [
+    "src/*"
+  ]
+}
