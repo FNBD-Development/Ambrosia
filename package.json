@@ -1,10 +1,11 @@
 {
+  "name": "test",
   "private": true,
   "type": "module",
   "devDependencies": {
     "bun-types": "latest",
     "turbo": "^1.11.2",
-    "@ambosia": "/src/*"
+    "@ambrosia": "workspace:*"
   },
   "scripts": {
     "build": "turbo build",
@@ -14,6 +15,7 @@
     "setup": "turbo run setup"
   },
   "workspaces": [
-    "src/*"
+    "/frontend",
+    "/backend"
   ]
 }
