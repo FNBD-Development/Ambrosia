@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
+const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -14,4 +15,5 @@ const config: Config = {
     require('preline/plugin'),
   ],
 };
+
 export default config;

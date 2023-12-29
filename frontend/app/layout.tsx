@@ -6,7 +6,7 @@ const font = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Ambrosia | Server Management",
-  description: "Cool xD",
+  description: "Server Management Made Simple.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={(font.className, "bg-zinc-900")}>
+      <body className={(font.className, "bg-white dark:bg-zinc-800")}>
         {children}
       </body>
     </html>
